@@ -1,8 +1,14 @@
 # Bitcoin Price Prediction and Risk Analysis
 
+## Introduction
+
+Bitcoin is a digital currency that operates without a central authority, meaning it isn’t controlled by banks or governments. Instead, it runs on a decentralized system called blockchain, where transactions are verified by a global network of computers. While Bitcoin has gained popularity as an investment and payment method, its price is highly unpredictable, often changing rapidly due to news, market trends, and investor sentiment.
+
+For traders and investors, this volatility presents both opportunities and risks. Without the right tools, predicting Bitcoin’s price movements can be difficult, leading to poor trading decisions and financial losses. Traditional trading methods often rely on experience and intuition, which may not be effective in such a fast-changing market.
+
 ## Project Overview
 
-The **Bitcoin Price Prediction and Risk Analysis** project leverages machine learning, time-series forecasting, and sentiment analysis techniques to help Bitcoin traders and investors make informed decisions. The system forecasts Bitcoin price movements, evaluates trading risks, and generates actionable trading signals using historical Bitcoin data, market trends, and sentiment data from news and social media.
+The project leverages machine learning, time-series forecasting, and sentiment analysis techniques to help Bitcoin traders and investors make informed decisions. The system forecasts Bitcoin price movements, evaluates trading risks, and generates actionable trading signals using historical Bitcoin data, market trends, and sentiment data from news and social media.
 
 ## Problem Statement
 
