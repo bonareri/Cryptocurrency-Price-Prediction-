@@ -132,9 +132,70 @@ The Bitcoin dataset comprises 3779 rows with the following key columns (with `Da
   The total number of Bitcoin traded during the day, providing insight into market activity and liquidity.
 - **Market Cap:**  
   The market capitalization for Bitcoin on that day, calculated as the closing price multiplied by the circulating supply.
+  
+#### Data Analysis
+**Trends Over Time**
+![image](https://github.com/user-attachments/assets/721f1403-1d6f-4fa1-b3f7-5223467843fa)
+Long-Term Uptrend
 
-#### Visualizing the data
-![image](https://github.com/user-attachments/assets/d54fda0d-fb59-4ebf-8c09-13fc1e7b62e0) 
+Bitcoin has experienced multiple price surges, with significant peaks in 2017, 2021, and 2024. The overall trend remains bullish, despite periodic corrections.
+
+**Bitcoin Price Trends by Year**
+![image](https://github.com/user-attachments/assets/c743dc66-ec1c-450a-afb1-22cb978ab99c)
+- **Low Prices Before 2017:** Bitcoin had relatively low volatility and price movement before 2017.  
+- **2017 Peak:** Bitcoin saw a significant spike, with the highest price reaching around **\$20,000** during the famous bull run.  
+- **2021 Bull Run:** Another major peak occurred in **2021**, with the maximum price exceeding **\$60,000**.  
+- **Post-2022 Recovery:** The price dipped in **2022** but rebounded in **2023–2024**, reaching new highs above **$100,000** in **2024 and 2025**.
+
+**Monthly Trends**
+![image](https://github.com/user-attachments/assets/68de251f-0dd3-4114-a3b1-cb51b844dda8)
+
+**1. Strong January Surge**  
+- Bitcoin starts the year at a high price, aligning with the historical **"January effect"** as investors re-enter the market.  
+
+**2. Mid-Year Decline (February - July)**  
+- A steady decline from **February to July**, reflecting seasonal corrections and reduced market activity.  
+- Historically, Bitcoin experiences a mid-year dip due to profit-taking and macroeconomic factors.  
+
+**3. Lowest Prices in June - July**  
+- The market often bottoms out in **June and July**, driven by regulatory news, miner capitulation, and liquidity shifts.  
+
+**4. Recovery Phase (August - October)**  
+- Bitcoin starts recovering from **August to October**, often fueled by institutional interest and anticipation of major events.  
+
+**5. Year-End Rally (November - December)**  
+- A strong upward trend in **November and December**, historically linked to **bull runs, institutional demand, and year-end financial strategies**.  
+
+**Weekday Trends**
+![image](https://github.com/user-attachments/assets/cf4a6890-3b5f-4572-bfd2-6a9cab59c48c)
+
+- **Consistent Pricing:** Bitcoin prices remain stable across all weekdays, with no significant bias in price movements.
+- **Weekend Trading:** Prices do not drop significantly on weekends, suggesting that Bitcoin's 24/7 market sustains strong trading activity even outside traditional stock market hours.
+
+**Daily Returns Distribution**
+![image](https://github.com/user-attachments/assets/7e4fe556-b557-4bdc-9721-25d6b20775c4)
+**1. Returns are Centered Around Zero**
+- Most daily returns cluster around **0%**, indicating Bitcoin's price is stable on most days.
+
+**2. High Volatility**
+- The distribution has **long tails**, meaning Bitcoin experiences **large price swings**, both positive and negative.
+
+**3. More Negative Outliers**
+- The left tail (negative returns) extends further, suggesting **more extreme downward price movements** than upward ones.
+
+**Moving Averages as Trend Indicators**
+![image](https://github.com/user-attachments/assets/0d498884-dbb9-4780-bfba-e41263c854c6)
+Moving Averages as Trend Indicators
+- **7-day EMA (orange, dashed line)** reacts quickly to price changes, tracking short-term movements.
+- **30-day EMA (red, dashed line)** smooths out fluctuations, showing a **long-term trend**.
+
+**RSI (Relative Strength Index)**
+![image](https://github.com/user-attachments/assets/3dc28530-b4ac-4d1a-a7b4-997ce74cafcb)
+The RSI fluctuates significantly, showing clear buying and selling pressure shifts. Periods of RSI above 70 indicate overbought conditions, while values below 30 signal oversold conditions.
+
+**Bollinger Bands**
+![image](https://github.com/user-attachments/assets/d99b86fd-4c75-4a87-8b15-efa0e48302ba)
+The Bollinger Bands (red and green lines) widen significantly during periods of high volatility, such as Bitcoin's major bull runs in **2017, 2021, and 2024**. This indicates strong price movements and increased market activity.  
 
 ### Checking for Stationarity:
 **Visual Inspection (Rolling Mean & Standard Deviation):**  
@@ -172,7 +233,8 @@ Interpretation: The differenced series is Stationary.
 
 **Seasonality Analysis:**
 ![image](https://github.com/user-attachments/assets/e7b93bc0-1a5a-4926-a8da-6adfcc496281)
-**1️⃣ Original Time Series (Top Panel: "Close")**
+
+**1️⃣ Original Time Series**
 - The Bitcoin price follows an exponential growth pattern with large fluctuations.  
 - This confirms the need for log transformation or differencing to stabilize variance.  
 
@@ -189,6 +251,7 @@ Interpretation: The differenced series is Stationary.
 - However, variance increases around 2021-2022, which might indicate volatility clustering.  
 
 ![image](https://github.com/user-attachments/assets/9c434f86-ca7f-460a-b03c-e6c42ca85f69)
+
 **1️⃣ Transformed Time Series ("Log_Close_Diff")**  
 - The original exponential trend has been **removed**, making fluctuations more stable.  
 - Differencing has eliminated the strong upward trend, helping make the series **more stationary**.  
@@ -276,91 +339,23 @@ I set a look-back period (look_back = 5), meaning the model will use the past 5 
 
 ### Model Predictions
 **Random Forest**
+**Actual vs Predicted Prices**
 ![image](https://github.com/user-attachments/assets/2feca498-794d-489b-bdd8-09942ae42928)
 
 **XGBoost**
+**Actual vs Predicted Prices**
 ![image](https://github.com/user-attachments/assets/d538bb94-4c6a-4718-b734-1607ddb23719)
 
-
-ARIMA Results                                
-==============================================================================
-Dep. Variable:              Log_Close   No. Observations:                 3023
-Model:                 ARIMA(1, 0, 1)   Log Likelihood                5546.001
-Date:                Sat, 08 Feb 2025   AIC                         -11084.002
-Time:                        20:27:16   BIC                         -11059.946
-Sample:                    10-06-2014   HQIC                        -11075.353
-                         - 01-14-2023                                         
-Covariance Type:                  opg                                         
-==============================================================================
-                 coef    std err          z      P>|z|      [0.025      0.975]
-------------------------------------------------------------------------------
-const          8.3953      0.856      9.807      0.000       6.717      10.073
-ar.L1          0.9995      0.000   2863.532      0.000       0.999       1.000
-ma.L1         -0.0191      0.011     -1.670      0.095      -0.042       0.003
-sigma2         0.0015   1.53e-05     97.511      0.000       0.001       0.002
-===================================================================================
-Ljung-Box (L1) (Q):                   0.01   Jarque-Bera (JB):             15680.65
-Prob(Q):                              0.94   Prob(JB):                         0.00
-Heteroskedasticity (H):               1.17   Skew:                            -0.79
-Prob(H) (two-sided):                  0.01   Kurtosis:                        14.04
-===================================================================================
-
-**Summary**
-
-- The **AR(1) coefficient is highly significant**, indicating strong autocorrelation. However, the **MA(1) coefficient is not statistically significant**.  
-- The **residuals are not normally distributed**, but the model does not suffer from **autocorrelation or heteroskedasticity**.  
-- The **AIC is very low (-10703.468)**, suggesting a **good model fit**.
-
+**ARIMA Results**                                
 **Actual vs Predicted Prices**
 ![image](https://github.com/user-attachments/assets/538a5c17-332f-4bf5-8eb5-6fba4045cca9)
 
-**SARIMA**
-SARIMAX Results                                      
-==========================================================================================
-Dep. Variable:                          Log_Close   No. Observations:                 3023
-Model:             SARIMAX(1, 0, 1)x(1, 0, 1, 12)   Log Likelihood                5522.789
-Date:                            Sat, 08 Feb 2025   AIC                         -11035.578
-Time:                                    20:27:50   BIC                         -11005.531
-Sample:                                10-06-2014   HQIC                        -11024.772
-                                     - 01-14-2023                                         
-Covariance Type:                              opg                                         
-==============================================================================
-                 coef    std err          z      P>|z|      [0.025      0.975]
-------------------------------------------------------------------------------
-ar.L1          1.0001   7.96e-05   1.26e+04      0.000       1.000       1.000
-ma.L1         -0.0180      0.012     -1.553      0.120      -0.041       0.005
-ar.S.L12      -0.1102      0.735     -0.150      0.881      -1.552       1.331
-ma.S.L12       0.0982      0.736      0.133      0.894      -1.345       1.542
-sigma2         0.0015   1.55e-05     96.022      0.000       0.001       0.002
-===================================================================================
-Ljung-Box (L1) (Q):                   0.03   Jarque-Bera (JB):             15636.00
-Prob(Q):                              0.87   Prob(JB):                         0.00
-Heteroskedasticity (H):               1.14   Skew:                            -0.80
-Prob(H) (two-sided):                  0.04   Kurtosis:                        14.05
-===================================================================================
+**SARIMAX Results**                                     
+**Actual vs Predicted Prices**
 ![image](https://github.com/user-attachments/assets/54e9f8a0-04fa-45f6-a9f2-c7d5ce7e519e)
 
 **Hyperparameter Tuning**
-SARIMAX Results                                
-==============================================================================
-Dep. Variable:                      y   No. Observations:                 3023
-Model:               SARIMAX(0, 1, 0)   Log Likelihood                5549.939
-Date:                Sat, 08 Feb 2025   AIC                         -11095.879
-Time:                        20:28:56   BIC                         -11083.851
-Sample:                    10-06-2014   HQIC                        -11091.554
-                         - 01-14-2023                                         
-Covariance Type:                  opg                                         
-==============================================================================
-                 coef    std err          z      P>|z|      [0.025      0.975]
-------------------------------------------------------------------------------
-intercept      0.0014      0.001      1.911      0.056   -3.49e-05       0.003
-sigma2         0.0015   1.54e-05     96.740      0.000       0.001       0.002
-===================================================================================
-Ljung-Box (L1) (Q):                   1.26   Jarque-Bera (JB):             15561.56
-Prob(Q):                              0.26   Prob(JB):                         0.00
-Heteroskedasticity (H):               1.18   Skew:                            -0.79
-Prob(H) (two-sided):                  0.01   Kurtosis:                        14.01
-===================================================================================
+**SARIMAX Results**                                
 ![image](https://github.com/user-attachments/assets/0d8e1b5d-8e8e-4520-b97d-5f318e961b1f)
 
 **PROPHET**
@@ -369,6 +364,7 @@ Prob(H) (two-sided):                  0.01   Kurtosis:                        14
 **LSTM Results**
 ![image](https://github.com/user-attachments/assets/dbb79603-2738-4cc7-9403-e5436bec0268)
 
+**Training & Validation Loss Curves**
 ![image](https://github.com/user-attachments/assets/6165d25e-d274-47dc-bca7-15c2be89effa)
 
 ## Model Evaluation
