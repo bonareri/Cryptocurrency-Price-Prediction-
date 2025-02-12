@@ -18,7 +18,7 @@ This project leverages multiple time-series forecasting models and sentiment ana
 - **Assess Market Risks**
 - **Generate Actionable Trading Signals**
 
-By integrating classical forecasting methods with modern deep learning and NLP techniques, our system provides data-driven insights for more informed trading decisions.
+By integrating classical forecasting methods with modern deep learning and NLP techniques, the system provides data-driven insights for more informed trading decisions.
 
 ---
 
@@ -35,12 +35,6 @@ By integrating classical forecasting methods with modern deep learning and NLP t
 
 4. **Trading Signal Generation:**  
    Generate buy, sell, and hold signals based on predictive models and market conditions.
-
-5. **Interactive Dashboards:**  
-   Visualize price trends, trading signals, and risk levels with interactive dashboards.
-
-6. **Automated Trading:**  
-   Implement a real-time automated trading system based on model insights.
 
 ---
 
@@ -66,7 +60,7 @@ This project centers on a regression task—predicting Bitcoin prices—using a 
 
 ### **PROPHET**
 - **Developed by:**  
-  Facebook
+  Prophet is a prominent open-source library for time series forecasting created by Facebook. 
 - **Strength:**  
   Handles complex seasonal patterns and multiple trend changes.
 
