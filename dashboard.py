@@ -6,7 +6,7 @@ import plotly.graph_objects as go
 # Load data
 @st.cache_data
 def load_data():
-    df = pd.read_csv("/content/cleaned_data.csv", parse_dates=["ds"])
+    df = pd.read_csv("cleaned_data.csv", parse_dates=["ds"])
     return df
 
 df = load_data()
