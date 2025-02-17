@@ -4,5 +4,6 @@ plotly
 yfinance
 matplotlib
 seaborn
+scikit-learn
 joblib
 tensorflow
