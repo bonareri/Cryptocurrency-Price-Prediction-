@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/24e74e02-394d-4e3a-89b5-b479ef434f01)# Cryptocurrecncy Price Prediction
+# Cryptocurrecncy Price Prediction
 ---
 
 ## 1. Introduction
@@ -39,6 +39,10 @@ The data for this project is sourced using the following APIs:
   - **Source:** Yahoo Finance API via the `yfinance` library  
   - **Data:** Open, high, low, close, and volume metrics.
 
+- **Circulating Supply:**
+- **Source:** CoinGecko API
+- **Data:** The circulating supply is used to calculate the Market Cap of each coin, by multiplying the Close price by the circulating supply during that time period.
+
 ### Features in the Dataset
 
 The dataset includes the following key features:
@@ -48,6 +52,7 @@ The dataset includes the following key features:
 - **High** – The highest price during the time period.
 - **Low** – The lowest price during the time period.
 - **Volume** – The total number of units traded during the time period.
+- **Market Cap** - The total market value of the cryptocurrency during the time period.
 - **Exponential Moving Averages (EMA):**
   - **EMA_50** – Short-term trend indicator (50-day EMA).
   - **EMA_200** – Long-term trend indicator (200-day EMA).
@@ -141,7 +146,7 @@ These observations highlight the volatility and price distributions for **BTC**,
 - Indicates **strong network utility and adoption**.
 
 **3️⃣ Solana (SOL) Gains Traction**
-- **SOL (purple)** had a late start but saw significant growth post-2021.
+- **SOL (green)** had a late start but saw significant growth post-2021.
 - **Smaller market cap** compared to BTC & ETH but shows steady **adoption and resilience**.
 
 **4️⃣ Market Cycles Are Clearly Visible**
@@ -161,7 +166,7 @@ These observations highlight the volatility and price distributions for **BTC**,
 - Shows **sustained liquidity**, indicating strong investor interest.  
 
 3️⃣ Solana (SOL) Gained Traction Post-2020  
-- **SOL (purple)** had minimal trading before 2020 but grew rapidly.  
+- **SOL (green)** had minimal trading before 2020 but grew rapidly.  
 - Lower volume than BTC & ETH, but **trading activity is increasing**.  
 
  4️⃣ Volume Spikes Correlate with Market Events  
@@ -171,7 +176,7 @@ These observations highlight the volatility and price distributions for **BTC**,
 
 ### Moving Averages (EMA)
 
-![image](https://github.com/user-attachments/assets/0f8c8324-6d74-4116-9cf6-0f58e6ce9cfa)
+![image](https://github.com/user-attachments/assets/24e74e02-394d-4e3a-89b5-b479ef434f01)
 
 ### Volatility Analysis Using Rolling Standard Deviation
 
@@ -350,5 +355,7 @@ Based on these metrics, **LSTM** emerges as the best-performing model for foreca
 ---
 
 ## 9. Model Deployment: 
+
+Deployed the model using streamlit 
 
   
