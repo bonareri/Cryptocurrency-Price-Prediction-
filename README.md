@@ -1,4 +1,4 @@
-# Cryptocurrecncy Price Prediction and Risk Analysis
+# Cryptocurrecncy Price Prediction
 ---
 
 ## 1. Introduction
@@ -67,21 +67,77 @@ To prepare the dataset for analysis and model training, the following preprocess
 ## 5. Exploratory Data Analysis
 
 ### Cryptocurrency Price Statistics 
+**Bitcoin Data**
 
-|       | Close      | High       | Low        | Open       | Volume        | Market Cap      |
-|-------|-----------|-----------|-----------|-----------|--------------|---------------|
-| **count** | 8231.000000 | 8231.000000 | 8231.000000 | 8231.000000 | 8.231000e+03 | 8.231000e+03 |
-| **mean**  | 9992.823821 | 10207.195049 | 9745.294258 | 9981.369649 | 1.341688e+10 | 2.547583e+11 |
-| **std**   | 18816.012464 | 19201.542903 | 18371.163929 | 18793.123284 | 1.676706e+10 | 3.626204e+11 |
-| **min**   | 0.515273   | 0.559759   | 0.505194   | 0.513391   | 6.520200e+05 | 2.516021e+08 |
-| **25%**   | 196.810043  | 203.406967  | 188.855286  | 196.756042  | 1.290527e+09 | 1.974679e+10 |
-| **50%**   | 1567.398682 | 1604.704102 | 1534.088257 | 1567.179321 | 7.186143e+09 | 1.079808e+11 |
-| **75%**   | 8626.275391 | 8791.957031 | 8366.544922 | 8611.597656 | 2.021654e+10 | 3.330086e+11 |
-| **max**   | 106146.265625 | 109114.882812 | 105291.734375 | 106147.296875 | 3.509679e+11 | 2.104267e+12 |
+| Statistic | Close       | High        | Low         | Open        | Volume        |
+|-----------|------------|------------|------------|------------|--------------|
+| Count     | 3807.000000 | 3807.000000 | 3807.000000 | 3807.000000 | 3.807000e+03 |
+| Mean      | 20587.991193 | 21022.647802 | 20086.369442 | 20564.123041 | 1.897846e+10 |
+| Std       | 23711.471881 | 24191.605193 | 23160.842989 | 23683.862047 | 2.071116e+10 |
+| Min       | 178.102997  | 211.731003  | 171.509995  | 176.897003  | 5.914570e+06 |
+| 25%       | 1278.034973 | 1287.570007 | 1265.265015 | 1275.320007 | 5.127045e+08 |
+| 50%       | 9508.993164 | 9680.367188 | 9296.872070 | 9491.626953 | 1.505308e+10 |
+| 75%       | 32941.566406 | 34125.681641 | 31323.410156 | 32844.773438 | 3.019101e+10 |
+| Max       | 106146.265625 | 109114.882812 | 105291.734375 | 106147.296875 | 3.509679e+11 |
+
+**Observations:** 
+- The **mean closing price** is **$20,588**, but the **standard deviation** is **$23,711**, indicating large fluctuations.  
+- The **minimum price** is **$178**, while the **maximum price** is **$106,146**, showing a wide price range.  
+- The **median closing price** is **$9,508**, much lower than the **mean**, suggesting a **right-skewed distribution** with increasing prices over time.  
+- Volume ranges from **$5.9 million** to **$350.97 billion**, indicating periods of extreme market activity.
+ 
+**Ethereum Data**
+
+| Statistic | Close       | High        | Low         | Open        | Volume         |
+|-----------|------------|------------|------------|------------|---------------|
+| **Count** | 2,658.000  | 2,658.000  | 2,658.000  | 2,658.000  | 2.658e+03     |
+| **Mean**  | 1,520.832  | 1,561.608  | 1,474.429  | 1,520.105  | 1.327e+10     |
+| **Std**   | 1,235.308  | 1,268.291  | 1,198.795  | 1,235.588  | 1.082e+10     |
+| **Min**   | 84.308     | 85.343     | 82.830     | 84.280     | 6.217e+08     |
+| **25%**   | 274.324    | 283.355    | 265.509    | 273.859    | 5.673e+09     |
+| **50%**   | 1,455.794  | 1,524.832  | 1,415.312  | 1,449.179  | 1.079e+10     |
+| **75%**   | 2,472.061  | 2,551.063  | 2,404.323  | 2,471.200  | 1.799e+10     |
+| **Max**   | 4,812.087  | 4,891.705  | 4,718.039  | 4,810.071  | 9.245e+10     |
+
+**Observations:**
+- The **mean closing price** is **$1,520**, with a **standard deviation** of **$1,235**, showing significant volatility.
+- Prices range from **$84** to **$4,812**, indicating a wide spread.
+- The **median closing price** is **$1,455**, suggesting a **somewhat symmetric distribution**.
+- Trading volume varies greatly, from **$621 million** to **$92.45 billion**, indicating occasional market surges.
+
+**Solana Data**
+
+| Statistic  | Close      | High       | Low        | Open       | Volume         |
+|------------|------------|------------|------------|------------|----------------|
+| **Count**  | 1775.0000  | 1775.0000  | 1775.0000  | 1775.0000  | 1.775000e+03   |
+| **Mean**   | 72.475326  | 75.313932  | 69.523772  | 72.390474  | 1.697939e+09   |
+| **Std**    | 71.119623  | 73.721297  | 68.421156  | 71.120493  | 2.239014e+09   |
+| **Min**    | 0.515273   | 0.559759   | 0.505194   | 0.513391   | 6.520200e+05   |
+| **25%**    | 18.246237  | 18.979635  | 17.388174  | 18.233952  | 2.604485e+08   |
+| **50%**    | 35.556404  | 37.223209  | 33.735134  | 35.482449  | 1.069991e+09   |
+| **75%**    | 136.751877 | 142.627663 | 131.819023 | 136.584198 | 2.442330e+09   |
+| **Max**    | 261.869751 | 294.334961 | 253.187439 | 261.872437 | 3.317296e+10   |
+
+**Observations:**
+
+- The **mean closing price** is **$72.48**, with a **standard deviation of $71.12**, indicating significant price fluctuations.  
+- The **minimum price** is **$0.51**, while the **maximum price** reaches **$261.87**, showing a wide range in value.  
+- The **mean trading volume** is **$1.70 billion**, but the **standard deviation is high** (**$2.24 billion**), suggesting varying levels of trading activity.
+- Volume ranges from **$652,020** to **$33.17 billion**, showing periods of both low and extreme market activity.
 
 ### Frequency Distribution
 
-![image](https://github.com/user-attachments/assets/6533cda8-6ee6-4014-8beb-f055908a6ffa)
+![image](https://github.com/user-attachments/assets/f23ecb4f-50f5-4284-8678-7e73b4b8968a)
+
+![image](https://github.com/user-attachments/assets/423d0117-50ee-43a1-81b7-1b0e57c0e8b4)
+
+![image](https://github.com/user-attachments/assets/b0c3f186-2b01-4888-b9ae-0f8f30d4a9eb)
+
+- The close price shows a **right-skewed distribution**, indicating that lower prices were more frequent.
+- There are **multiple peaks**, suggesting different historical price levels or market phases.  
+- The trading volume is also **highly skewed**, with most transactions occurring at lower volumes.  
+- There are **a few extreme values**, indicating periods of unusually high trading activity.
+- The **steep decline** suggests that the majority of trading days had relatively low volume compared to the outliers.
 
 ### Correlation Martix
 
@@ -89,7 +145,9 @@ To prepare the dataset for analysis and model training, the following preprocess
 
 ### Closing Price Over Time
 
-![image](https://github.com/user-attachments/assets/29cb6e7b-f119-44f6-8a62-1c12c5f05df3)
+![image](https://github.com/user-attachments/assets/c09c5708-fcee-4eaa-99f5-b5bcfb6d1781)
+
+![image](https://github.com/user-attachments/assets/102d2cef-d37a-4f97-a647-29acb91dd7d2)
 
 **1️⃣ Bitcoin (BTC) Dominates Price Trends**
 - **BTC (orange)** remains the highest-priced cryptocurrency.
@@ -147,30 +205,16 @@ To prepare the dataset for analysis and model training, the following preprocess
 - **2022:** Market crash → **Sharp spikes, indicating panic selling**.  
 - **2024:** Volume stabilizes but remains **volatile, especially for BTC**.
 
-### Daily Returns (Volatility)
+### Moving Averages (EMA)
 
-![image](https://github.com/user-attachments/assets/92092389-0c3f-4bf9-af2f-571a0c5313c4)
+![image](https://github.com/user-attachments/assets/8ee125cb-367c-4cc8-abb1-54eac94e8828)
 
-1️⃣ Bitcoin (BTC) Has the Most Stable Daily Returns  
-- **BTC (orange)** shows relatively smaller fluctuations compared to ETH & SOL.  
-- This suggests **lower risk & more stability**, making it appealing for long-term investors.  
 
- 2️⃣ Ethereum (ETH) Displays Higher Volatility Post-2017  
-- **ETH (blue)** starts showing larger daily returns around 2017.  
-- Significant **price swings** occur, aligning with major market cycles.  
+### Volatility Analysis Using Rolling Standard Deviation
 
- 3️⃣ Solana (SOL) Has the Most Extreme Daily Swings  
-- **SOL (purple)** exhibits **wild daily return fluctuations**, especially after 2020.  
-- This suggests **high speculative trading** and market sensitivity.  
+Volatility measures how much prices fluctuate over time. Higher volatility indicates higher risk but also higher potential returns.
 
-4️⃣ Crypto Market Volatility Peaks in Key Events  
-- **2018:** Post-bull market crash → Large drops in ETH & BTC.  
-- **2021:** Crypto bull run → High returns but also rapid corrections.  
-- **2022:** Market downturn → SOL & ETH exhibit extreme drops.
-
-### Volatility Using Rolling Standard Deviation
-
-![image](https://github.com/user-attachments/assets/c7b6f16f-b287-41df-8569-4f8ccd12e42d)
+![image](https://github.com/user-attachments/assets/4e21b0e6-8a7a-43b1-9f65-808c4adb9ce3)
 
  1️⃣ Bitcoin (BTC) Shows the Most Stability  
 - BTC (orange) maintains relatively low volatility over time.  
@@ -184,7 +228,7 @@ To prepare the dataset for analysis and model training, the following preprocess
 3️⃣ Volatility Spikes Align with Major Market Events  
 - 2018: Crypto market crash → Sudden surge in volatility.  
 - 2020: Pandemic-driven uncertainty → Increased market swings.  
-- 2021: **Bull run & corrections** → Highest volatility levels observed.  
+- 2021: **Bull run & corrections** → Highest volatility levels observed. 
 
 ## 7. Implementation
 
@@ -215,8 +259,9 @@ To prepare the dataset for analysis and model training, the following preprocess
 - **Differencing:**  
   Removes trends, further stabilizing the series.
 
-- **Seasonality Analysis:**  
-  ![Seasonal Decomposition](https://github.com/user-attachments/assets/e7b93bc0-1a5a-4926-a8da-6adfcc496281)
+### **Seasonality Analysis:**  
+
+![Seasonal Decomposition](https://github.com/user-attachments/assets/e7b93bc0-1a5a-4926-a8da-6adfcc496281)
 
 ---
 
