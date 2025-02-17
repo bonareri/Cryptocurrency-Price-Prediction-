@@ -1,181 +1,198 @@
-# Bitcoin Price Prediction and Risk Analysis
-
+# Cryptocurrecncy Price Prediction and Risk Analysis
 ---
 
 ## 1. Introduction
 
-Bitcoin is a digital currency operating on a decentralized blockchain system, independent of banks or governments. Despite its growing adoption as an investment and payment method, Bitcoin is notoriously volatile—its price can change rapidly based on news, market trends, and investor sentiment.
+This project aims to build a Cryptocurrency Price Prediction system to help traders and investors make data-driven decisions. Cryptocurrency markets are highly volatile, and predicting price movements can minimize risks, maximize profits, and enhance trading strategies.
 
-For traders and investors, this volatility offers both opportunities and risks. Without robust analytical tools, predicting Bitcoin’s price movements can be challenging, potentially leading to poor trading decisions and financial losses. Traditional trading methods, which often rely on experience and intuition, may not suffice in such a fast-paced market.
+Unlike traditional markets, cryptocurrencies operate 24/7 and are influenced by factors such as social media trends and global regulations. The project utilizes techniques such as:
 
----
+- **Machine Learning Models** (LSTMs, Random Forest, XG-Boost, ARIMA, SARIMA, PROPHET)
+- **Statistical Analysis** (Moving averages, time series analysis)
 
-## 2. Project Overview
+These techniques will provide accurate insights to aid cryptocurrency traders and investors.
 
-This project leverages multiple time-series forecasting models and sentiment analysis techniques to:
-
-- **Forecast Bitcoin Prices**
-- **Assess Market Risks**
-- **Generate Actionable Trading Signals**
-
-By integrating classical forecasting methods with modern deep learning and NLP techniques, the system provides data-driven insights for more informed trading decisions.
 
 ---
 
-## 3. Project Objectives
+## 2. Problem Statement 
 
-1. **Bitcoin Price Prediction:**  
-   Predict short-term and long-term price movements using machine learning and time-series forecasting techniques.
+Cryptocurrency prices are highly volatile, making it difficult for traders and investors to make informed decisions. This volatility leads to financial losses, market manipulation, and investment uncertainty. The project aims to address these challenges by predicting future prices using machine learning and statistical analysis, providing data-driven insights, and reducing uncertainty in cryptocurrency trading.
 
-2. **Market Sentiment Analysis:**  
-   Analyze sentiment from news articles, social media, and financial reports using NLP techniques.
+## 3. Objectives
 
-3. **Risk Analysis:**  
-   Evaluate trading risks through volatility metrics, drawdowns, and historical trends.
+This project aims to achieve the following goals:
 
-4. **Trading Signal Generation:**  
-   Generate buy, sell, and hold signals based on predictive models and market conditions.
+- **Analyzing Historical Price Trends** – Study past price trends to understand market behavior and identify patterns.
+- **Implementing Machine Learning Models for Prediction** – Develop and train models like LSTMs, Random Forest, and ARIMA to predict future cryptocurrency prices.
+- **Evaluating Model Accuracy and Improving Predictions** – Assess the performance of different models and fine-tune them to improve prediction accuracy.
 
----
+By accomplishing these objectives, the project will provide reliable and data-driven predictions for cryptocurrency price movements.
 
-## 4. Methodologies Used for Analysis
 
-This project centers on a regression task—predicting Bitcoin prices—using a variety of models:
+## 4. Data Collection and Preprocessing
 
-### **Random Forest**
-- **Description:**  
-  An ensemble method that captures complex, non-linear relationships.
-- **Application:**  
-  Effective for predicting continuous outcomes like cryptocurrency prices.
+### Data Source
 
-### **ARIMA (AutoRegressive Integrated Moving Average)**
-- **Components:**  
-  - **AR (AutoRegressive):** Uses past values to predict the future.
-  - **I (Integrated):** Differencing to achieve stationarity.
-  - **MA (Moving Average):** Uses past errors for prediction.
-
-### **SARIMA (Seasonal ARIMA)**
-- **Extension:**  
-  Incorporates seasonal patterns to handle periodic fluctuations.
-
-### **PROPHET**
-- **Developed by:**  
-  Prophet is a prominent open-source library for time series forecasting created by Facebook. 
-- **Strength:**  
-  Handles complex seasonal patterns and multiple trend changes.
-
-### **LSTM (Long Short-Term Memory)**
-- **Type:**  
-  A recurrent neural network (RNN) that overcomes the vanishing gradient problem.
-- **Key Components:**  
-  - **Input Gate:** Regulates new information storage.
-  - **Forget Gate:** Discards unnecessary information.
-  - **Memory Cell:** Retains long-term data.
-  - **Output Gate:** Determines the final output.
-
-> **Visual Reference:**  
-> [LSTM Gate Diagram](https://th.bing.com/th?id=OIP.1ylt72UVW-wTRr382T17TgHaFI&w=300&h=208&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2)
-
----
-
-## 5. Data Collection and Preprocessing
-
-### **Data Sources**
+The data for this project is sourced using the following APIs:
 
 - **Price Data:**  
   - **Source:** Yahoo Finance API via the `yfinance` library  
   - **Data:** Open, high, low, close, and volume metrics.
 
 - **Circulating Supply:**  
-  - **Source:** CoinGecko API  
+  - **Source:** CoinGecko API    
   - **Usage:** To calculate Market Capitalization (closing price × circulating supply).
 
-- **Sentiment Analysis Data:**  
-  - **Source:** Reddit API  
-  - **Usage:** Captures user opinions and trends impacting Bitcoin price.
+### Features in the Dataset
+The dataset includes the following key features:
+
+- **Open** – The price at which the cryptocurrency opened during a specific time period.
+- **Close** – The price at which the cryptocurrency closed during the specific time period.
+- **High** – The highest price during the time period.
+- **Low** – The lowest price during the time period.
+- **Volume** – The total number of units traded during the time period.
+- **Market Cap** – The total market value of the cryptocurrency (calculated as closing price × circulating supply).
+- **Exponential Moving Averages (EMA):**
+  - **EMA_7** – Short-term trend indicator (7-day EMA).
+  - **EMA_30** – Long-term trend indicator (30-day EMA).
+- **Daily Return:** Measures the percentage change in closing prices between consecutive days.
+- **Relative Strength Index (RSI):** Identifies overbought (>70) or oversold (<30) conditions.
+
+## Preprocessing Steps
+To prepare the dataset for analysis and model training, the following preprocessing step were performed:
+
+- **Feature Engineering:** New features like moving averages and RSI will be created to improve the model's performance.
+- **Normalization/Standardization:** Numerical features will be scaled to ensure they are on a similar range, improving the model's accuracy.
+- **Splitting Data into Training & Testing Sets:** The data will be split into training and testing sets to help evaluate model performance and prevent overfitting.
+
+These preprocessing steps are essential for ensuring the dataset is clean, relevant, and ready for accurate price predictions.
 
 ---
 
-### **Data Cleaning**
+## 5. Exploratory Data Analysis
 
-#### **Price Data Cleaning**
-- Convert the 'Date' column to a datetime format with UTC awareness.
-- Remove timezone information.
-- Set 'Date' as the index.
-- Sort data chronologically.
-- Remove unnecessary columns.
+### Cryptocurrency Price Statistics 
 
-#### **Sentiment Analysis Cleaning**
-- Normalize text (convert to lowercase).
-- Remove punctuation and special characters.
-- Remove stopwords.
-- Tokenize the text.
+|       | Close      | High       | Low        | Open       | Volume        | Market Cap      |
+|-------|-----------|-----------|-----------|-----------|--------------|---------------|
+| **count** | 8231.000000 | 8231.000000 | 8231.000000 | 8231.000000 | 8.231000e+03 | 8.231000e+03 |
+| **mean**  | 9992.823821 | 10207.195049 | 9745.294258 | 9981.369649 | 1.341688e+10 | 2.547583e+11 |
+| **std**   | 18816.012464 | 19201.542903 | 18371.163929 | 18793.123284 | 1.676706e+10 | 3.626204e+11 |
+| **min**   | 0.515273   | 0.559759   | 0.505194   | 0.513391   | 6.520200e+05 | 2.516021e+08 |
+| **25%**   | 196.810043  | 203.406967  | 188.855286  | 196.756042  | 1.290527e+09 | 1.974679e+10 |
+| **50%**   | 1567.398682 | 1604.704102 | 1534.088257 | 1567.179321 | 7.186143e+09 | 1.079808e+11 |
+| **75%**   | 8626.275391 | 8791.957031 | 8366.544922 | 8611.597656 | 2.021654e+10 | 3.330086e+11 |
+| **max**   | 106146.265625 | 109114.882812 | 105291.734375 | 106147.296875 | 3.509679e+11 | 2.104267e+12 |
 
----
+### Frequency Distribution
 
-### **Feature Engineering**
+![image](https://github.com/user-attachments/assets/6533cda8-6ee6-4014-8beb-f055908a6ffa)
 
-- **Date Features:**  
-  Extract year, month, day, quarter, and weekday to capture seasonality and cyclic patterns.
+### Correlation Martix
 
-- **Daily Return:**  
-  Measures the percentage change in closing prices between consecutive days.
+![image](https://github.com/user-attachments/assets/2c4751e0-4b73-4b84-a3ac-862efc82e0df)
 
-- **Exponential Moving Averages (EMA):**  
-  - **EMA_7:** Highlights short-term trends.  
-  - **EMA_30:** Indicates longer-term trends.
+### Closing Price Over Time
 
-- **Relative Strength Index (RSI):**  
-  Identifies overbought (>70) or oversold (<30) conditions.
+![image](https://github.com/user-attachments/assets/29cb6e7b-f119-44f6-8a62-1c12c5f05df3)
 
-- **Bollinger Bands:**  
-  - Uses a 20-day SMA with upper and lower bands based on standard deviations.
-  - Indicates volatility and potential breakouts.
+**1️⃣ Bitcoin (BTC) Dominates Price Trends**
+- **BTC (orange)** remains the highest-priced cryptocurrency.
+- Surged past **$100,000 in 2024**, showing strong market confidence.
+- **Historical peaks in 2017, 2021, and 2024** indicate repeated bull cycles.
 
----
+**2️⃣ Ethereum (ETH) Shows Moderate Growth**
+- **ETH (blue)** has a much lower price range compared to BTC.
+- Peaked around **$5,000** in previous bull cycles.
+- **Gradual upward trend**, showing solid adoption.
 
-### **Feature Scaling**
+**3️⃣ Solana (SOL) Remains Relatively Lower in Price**
+- **SOL (purple)** shows price spikes after 2021 but remains below BTC & ETH.
 
-- **Standard Scaler:**  
-  Scales data to a mean of 0 and a standard deviation of 1—important for algorithms sensitive to feature magnitude.
+### Market Capitalization
 
----
+![image](https://github.com/user-attachments/assets/a075b274-3c65-460d-a8c6-8daf3e31ab48)
 
-## 6. Implementation
+**1️⃣ Bitcoin (BTC) Leads the Market**
+- **BTC (orange)** has the highest market capitalization, peaking above **$2 trillion**.
+- Significant **growth during bull runs** (2017, 2021, 2024).
+- **Recent 2024 surge** suggests renewed investor confidence.
 
-### **Dataset Overview**
+**2️⃣ Ethereum (ETH) Shows Strong Growth**
+- **ETH (blue)** follows BTC but at a lower magnitude.
+- Peaked around **$500 billion** in 2021 but remains **steadily increasing**.
+- Indicates **strong network utility and adoption**.
 
-The Bitcoin dataset contains **3779 rows** with key columns:
-- **Open, High, Low, Close, Volume, Market Cap**
+**3️⃣ Solana (SOL) Gains Traction**
+- **SOL (purple)** had a late start but saw significant growth post-2021.
+- **Smaller market cap** compared to BTC & ETH but shows steady **adoption and resilience**.
 
-### **Data Analysis Visualizations**
+**4️⃣ Market Cycles Are Clearly Visible**
+- **Boom and bust cycles** are evident (2021 bull run, 2022 bear market).
+- **Post-2023 recovery** shows renewed market interest.
 
-- **Trends Over Time:**  
-  ![Long-Term Uptrend](https://github.com/user-attachments/assets/721f1403-1d6f-4fa1-b3f7-5223467843fa)  
-  *Bitcoin has experienced significant surges in 2017, 2021, and 2024.*
+### Trading Volume Analysis
 
-- **Yearly Price Trends:**  
-  ![Bitcoin Price Trends by Year](https://github.com/user-attachments/assets/c743dc66-ec1c-450a-afb1-22cb978ab99c)
+![image](https://github.com/user-attachments/assets/276530bc-8a0d-4b2a-9f33-5579de69bc86)
 
-- **Monthly Trends:**  
-  ![Monthly Trends](https://github.com/user-attachments/assets/68de251f-0dd3-4114-a3b1-cb51b844dda8)
+1️⃣ Bitcoin (BTC) Dominates Trading Volume  
+- **BTC (orange)** has the highest trading volume over time, especially during market peaks.  
+- Major **spikes align with market cycles** (e.g., 2021 bull run).  
 
-- **Weekday Trends:**  
-  ![Weekday Trends](https://github.com/user-attachments/assets/cf4a6890-3b5f-4572-bfd2-6a9cab59c48c)
+2️⃣ Ethereum (ETH) Has Consistently High Volume  
+- **ETH (blue)** follows BTC’s trend but at a lower scale.  
+- Shows **sustained liquidity**, indicating strong investor interest.  
 
-- **Daily Returns Distribution:**  
-  ![Daily Returns Distribution](https://github.com/user-attachments/assets/7e4fe556-b557-4bdc-9721-25d6b20775c4)
+3️⃣ Solana (SOL) Gained Traction Post-2020  
+- **SOL (purple)** had minimal trading before 2020 but grew rapidly.  
+- Lower volume than BTC & ETH, but **trading activity is increasing**.  
 
-- **Moving Averages:**  
-  ![Moving Averages](https://github.com/user-attachments/assets/0d498884-dbb9-4780-bfba-e41263c854c6)
+ 4️⃣ Volume Spikes Correlate with Market Events  
+- **2021:** Crypto bull run → **Highest trading activity ever recorded**.  
+- **2022:** Market crash → **Sharp spikes, indicating panic selling**.  
+- **2024:** Volume stabilizes but remains **volatile, especially for BTC**.
 
-- **RSI Trends:**  
-  ![RSI](https://github.com/user-attachments/assets/3dc28530-b4ac-4d1a-a7b4-997ce74cafcb)
+### Daily Returns (Volatility)
 
-- **Bollinger Bands:**  
-  ![Bollinger Bands](https://github.com/user-attachments/assets/d99b86fd-4c75-4a87-8b15-efa0e48302ba)
+![image](https://github.com/user-attachments/assets/92092389-0c3f-4bf9-af2f-571a0c5313c4)
 
----
+1️⃣ Bitcoin (BTC) Has the Most Stable Daily Returns  
+- **BTC (orange)** shows relatively smaller fluctuations compared to ETH & SOL.  
+- This suggests **lower risk & more stability**, making it appealing for long-term investors.  
+
+ 2️⃣ Ethereum (ETH) Displays Higher Volatility Post-2017  
+- **ETH (blue)** starts showing larger daily returns around 2017.  
+- Significant **price swings** occur, aligning with major market cycles.  
+
+ 3️⃣ Solana (SOL) Has the Most Extreme Daily Swings  
+- **SOL (purple)** exhibits **wild daily return fluctuations**, especially after 2020.  
+- This suggests **high speculative trading** and market sensitivity.  
+
+4️⃣ Crypto Market Volatility Peaks in Key Events  
+- **2018:** Post-bull market crash → Large drops in ETH & BTC.  
+- **2021:** Crypto bull run → High returns but also rapid corrections.  
+- **2022:** Market downturn → SOL & ETH exhibit extreme drops.
+
+### Volatility Using Rolling Standard Deviation
+
+![image](https://github.com/user-attachments/assets/c7b6f16f-b287-41df-8569-4f8ccd12e42d)
+
+ 1️⃣ Bitcoin (BTC) Shows the Most Stability  
+- BTC (orange) maintains relatively low volatility over time.  
+- This suggests it is more **established** and less reactive to short-term market movements.  
+
+ 2️⃣ Ethereum (ETH) and Solana (SOL) Are More Volatile  
+- ETH (blue) experiences **moderate fluctuations**, especially during market shifts.  
+- SOL (purple) has the **highest volatility**, with frequent sharp spikes.  
+- Post-2021, **SOL's volatility exceeds ETH & BTC**, indicating **higher speculative activity**.  
+
+3️⃣ Volatility Spikes Align with Major Market Events  
+- 2018: Crypto market crash → Sudden surge in volatility.  
+- 2020: Pandemic-driven uncertainty → Increased market swings.  
+- 2021: **Bull run & corrections** → Highest volatility levels observed.  
+
+## 7. Implementation
 
 ### **Checking for Stationarity**
 
