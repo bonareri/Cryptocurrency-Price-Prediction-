@@ -12,7 +12,6 @@ Unlike traditional markets, cryptocurrencies operate 24/7 and are influenced by 
 
 These techniques will provide accurate insights to aid cryptocurrency traders and investors.
 
-
 ---
 
 ## 2. Problem Statement 
@@ -40,11 +39,8 @@ The data for this project is sourced using the following APIs:
   - **Source:** Yahoo Finance API via the `yfinance` library  
   - **Data:** Open, high, low, close, and volume metrics.
 
-- **Circulating Supply:**  
-  - **Source:** CoinGecko API    
-  - **Usage:** To calculate Market Capitalization (closing price × circulating supply).
-
 ### Features in the Dataset
+
 The dataset includes the following key features:
 
 - **Open** – The price at which the cryptocurrency opened during a specific time period.
@@ -52,21 +48,19 @@ The dataset includes the following key features:
 - **High** – The highest price during the time period.
 - **Low** – The lowest price during the time period.
 - **Volume** – The total number of units traded during the time period.
-- **Market Cap** – The total market value of the cryptocurrency (calculated as closing price × circulating supply).
 - **Exponential Moving Averages (EMA):**
-  - **EMA_7** – Short-term trend indicator (7-day EMA).
-  - **EMA_30** – Long-term trend indicator (30-day EMA).
+  - **EMA_50** – Short-term trend indicator (50-day EMA).
+  - **EMA_200** – Long-term trend indicator (200-day EMA).
 - **Daily Return:** Measures the percentage change in closing prices between consecutive days.
 - **Relative Strength Index (RSI):** Identifies overbought (>70) or oversold (<30) conditions.
 
-## Preprocessing Steps
-To prepare the dataset for analysis and model training, the following preprocessing step were performed:
+### Preprocessing Steps
 
-- **Feature Engineering:** New features like moving averages and RSI will be created to improve the model's performance.
-- **Normalization/Standardization:** Numerical features will be scaled to ensure they are on a similar range, improving the model's accuracy.
-- **Splitting Data into Training & Testing Sets:** The data will be split into training and testing sets to help evaluate model performance and prevent overfitting.
+To prepare the dataset for analysis and model training, the following preprocessing steps were performed:
 
-These preprocessing steps are essential for ensuring the dataset is clean, relevant, and ready for accurate price predictions.
+- **Feature Engineering:** I created additional features such as Exponential Moving Averages (EMA_50, EMA_200), Daily Return, and RSI to gain deeper insights into the price trends.
+- **Normalization/Standardization:** Since the 'Close' prices were not normally distributed, I applied the **Min-Max Scaler** to normalize the data. This transformed the values into a range between 0 and 1, ensuring the model could better learn from the data.
+- **Splitting Data into Training & Testing Sets:** The data was split into **80% training** and **20% testing**. This division allowed the model to learn from the majority of the data while being evaluated on a separate testing set, ensuring it can generalize well to new, unseen data.
 
 ---
 
@@ -238,21 +232,22 @@ For LSTM models, we use a sliding window approach (look_back = 5) to create 3D t
 ### **LSTM Model Architecture**
 
 - **LSTM Layers:**  
-  - **Layer 1:** 40 units, returns sequences, uses tanh activation with L2 regularization.
-  - **Layer 2:** 30 units, final output state, tanh activation with L2 regularization.
+  - **Layer 1:** 50 units, returns sequences, uses tanh activation with L2 regularization.
+  - **Layer 2:** 40 units, final output state, tanh activation with L2 regularization.
   
 - **Dropout Layers:**  
   0.3 dropout after each LSTM layer to mitigate overfitting.
   
 - **Dense Layers:**  
-  - 20-unit dense layer with ReLU activation.
+  - 30-unit dense layer with ReLU activation.
   - Final dense layer with 1 unit for regression.
 
 - **Training Details:**  
   - **Optimizer:** Adam with a learning rate of 0.0005  
   - **Loss Function:** Mean Squared Error (MSE)  
   - **Epochs:** Up to 100 with early stopping (patience = 10, restore best weights)  
-  ![Training & Validation Loss](https://github.com/user-attachments/assets/6165d25e-d274-47dc-bca7-15c2be89effa)
+
+  ![image](https://github.com/user-attachments/assets/fcde4ce9-27a3-4c25-84fe-fe95598f7249)
 
 ---
 
@@ -271,12 +266,12 @@ For LSTM models, we use a sliding window approach (look_back = 5) to create 3D t
 ## 7. Model Predictions
 
 ### **Random Forest**
-- **Actual vs Predicted Prices:**  
-  ![Random Forest Results](https://github.com/user-attachments/assets/2feca498-794d-489b-bdd8-09942ae42928)
+- **Actual vs Predicted Prices:**
+  ![image](https://github.com/user-attachments/assets/19c0219e-ea12-4dd2-b137-9eacc25564a6)
 
 ### **XGBoost**
 - **Actual vs Predicted Prices:**  
-  ![XGBoost Results](https://github.com/user-attachments/assets/d538bb94-4c6a-4718-b734-1607ddb23719)
+  ![image](https://github.com/user-attachments/assets/718be5c9-da6c-4366-950b-443795705611)
 
 ### **ARIMA**
 - **Actual vs Predicted Prices:**  
@@ -292,11 +287,15 @@ For LSTM models, we use a sliding window approach (look_back = 5) to create 3D t
 
 ### **PROPHET**
 - **Results:**  
-  ![Prophet Results](https://github.com/user-attachments/assets/ef468343-90ff-4a5b-bf14-cff7ab04d3db)
+  ![image](https://github.com/user-attachments/assets/bd371742-e43c-4c9c-8b9c-80892b4f343b)
 
 ### **LSTM**
 - **Results:**  
-  ![LSTM Results](https://github.com/user-attachments/assets/dbb79603-2738-4cc7-9403-e5436bec0268)
+  ![image](https://github.com/user-attachments/assets/0e9d6d2c-d174-47de-98be-0903172e3d12)
+  
+  ![image](https://github.com/user-attachments/assets/517cb312-e6ac-48a1-b753-257d219168ba)
+
+  ![image](https://github.com/user-attachments/assets/6d238d5c-a5e3-47d5-ac7d-b9c677610d17)
 
 ---
 
@@ -316,25 +315,27 @@ For LSTM models, we use a sliding window approach (look_back = 5) to create 3D t
 
 | **Model**          | **MAE**    | **RMSE**   |
 |--------------------|------------|------------|
-| **Prophet**        | 1271.30    | 1722.81    |
-| **LSTM**           | 2108.59    | 2777.53    |
-| **Random Forest**  | 4280.44    | 11070.36   |
-| **XGBoost**        | 4794.99    | 11542.46   |
-| **ARIMA**          | 26007.51   | 33977.92   |
-| **SARIMA**         | 14011.45   | 19170.45   |
-| **Tuned SARIMA**   | 29707.52   | 38076.21   |
+| **LSTM**           | 2147.02    | 2832.39    |
+| **Random Forest**  | 4853.04    | 11581.81   |
+| **XGBoost**        | 5498.91    | 12441.40   |
+| **Prophet**        | 11342.16   | 15621.58   |
+| **ARIMA**          | 26449.34   | 34524.33   |
+| **SARIMA**         | 15283.65   | 20759.14   |
+| **Tuned SARIMA**   | 30186.72   | 38668.71   |
+
+**LSTM Crypto model evaluation**
+
+| **Model**          | **MAE**    | **RMSE**   |
+|--------------------|------------|------------|
+| **Bitcoin**        | 2147.02    | 2832.39    |
+| **Ethereum**       |  125.98    | 174.23     |
+| **Solana**         |  10.47     | 13.71      |
 
 **Conclusion:**  
-Based on these metrics, **Prophet** emerges as the best-performing model for forecasting Bitcoin prices with the lowest MAE and RMSE values.
+Based on these metrics, **LSTM** emerges as the best-performing model for forecasting Bitcoin prices with the lowest MAE and RMSE values.
 
 ---
 
-## 9. Next Steps
+## 9. Model Deployment: 
 
-1. **Dashboard Development:**  
-   - Create interactive dashboards to display historical trends, predicted prices, trading signals, and risk assessments.
-   - Include visualizations for volatility, drawdowns, and reward-to-risk ratios.
-
-2. **Model Deployment:**  
-   - Deploy the system using frameworks like Flask or Streamlit.
-   - Integrate real-time trading alerts via Twilio or email notifications.
+  
