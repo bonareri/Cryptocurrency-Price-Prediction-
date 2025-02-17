@@ -40,8 +40,8 @@ The data for this project is sourced using the following APIs:
   - **Data:** Open, high, low, close, and volume metrics.
 
 - **Circulating Supply:**
-- **Source:** CoinGecko API
-- **Data:** The circulating supply is used to calculate the Market Cap of each coin, by multiplying the Close price by the circulating supply during that time period.
+ - **Source:** CoinGecko API
+ - **Data:** The circulating supply is used to calculate the Market Cap of each coin, by multiplying the Close price by the circulating supply during that time period.
 
 ### Features in the Dataset
 
