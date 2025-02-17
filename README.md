@@ -5,10 +5,11 @@
 
 This project aims to build a Cryptocurrency Price Prediction system to help traders and investors make data-driven decisions. Cryptocurrency markets are highly volatile, and predicting price movements can minimize risks, maximize profits, and enhance trading strategies.
 
-Unlike traditional markets, cryptocurrencies operate 24/7 and are influenced by factors such as social media trends and global regulations. The project utilizes techniques such as:
+Unlike traditional markets, cryptocurrencies operate 24/7 and are influenced by factors such as social media trends and global regulations. The project utilizes techniques the following techniques:
 
-- **Machine Learning Models** (LSTMs, Random Forest, XG-Boost, ARIMA, SARIMA, PROPHET)
-- **Statistical Analysis** (Moving averages, time series analysis)
+- **Machine Learning Models**: Random Forest, XG-Boost.
+- **Time series Models**:  ARIMA, SARIMA, PROPHET
+- **Deep Learning Models**: LSTM
 
 These techniques will provide accurate insights to aid cryptocurrency traders and investors.
 
@@ -23,13 +24,13 @@ Cryptocurrency prices are highly volatile, making it difficult for traders and i
 This project aims to achieve the following goals:
 
 - **Analyzing Historical Price Trends** – Study past price trends to understand market behavior and identify patterns.
-- **Implementing Machine Learning Models for Prediction** – Develop and train models like LSTMs, Random Forest, and ARIMA to predict future cryptocurrency prices.
+- **Implementing Machine Learning and Time series Models for Prediction** – Develop and train models like LSTMs, Random Forest, and ARIMA to predict future cryptocurrency prices.
 - **Evaluating Model Accuracy and Improving Predictions** – Assess the performance of different models and fine-tune them to improve prediction accuracy.
 
 By accomplishing these objectives, the project will provide reliable and data-driven predictions for cryptocurrency price movements.
 
 
-## 4. Data Collection and Preprocessing
+## 4. Data Collection
 
 ### Data Source
 
@@ -58,16 +59,6 @@ The dataset includes the following key features:
   - **EMA_200** – Long-term trend indicator (200-day EMA).
 - **Daily Return:** Measures the percentage change in closing prices between consecutive days.
 - **Relative Strength Index (RSI):** Identifies overbought (>70) or oversold (<30) conditions.
-
-### Preprocessing Steps
-
-To prepare the dataset for analysis and model training, the following preprocessing steps were performed:
-
-- **Feature Engineering:** I created additional features such as Exponential Moving Averages (EMA_50, EMA_200), Daily Return, and RSI to gain deeper insights into the price trends.
-- **Normalization/Standardization:** Since the 'Close' prices were not normally distributed, I applied the **Min-Max Scaler** to normalize the data. This transformed the values into a range between 0 and 1, ensuring the model could better learn from the data.
-- **Splitting Data into Training & Testing Sets:** The data was split into **80% training** and **20% testing**. This division allowed the model to learn from the majority of the data while being evaluated on a separate testing set, ensuring it can generalize well to new, unseen data.
-
----
 
 ## 5. Exploratory Data Analysis
 
@@ -111,6 +102,18 @@ These observations highlight the volatility and price distributions for **BTC**,
 ### Correlation Martix
 
 ![image](https://github.com/user-attachments/assets/2c4751e0-4b73-4b84-a3ac-862efc82e0df)
+
+## 6. Data Preprocessing
+
+To prepare the dataset for analysis and model training, the following preprocessing steps were performed:
+
+- **Feature Engineering:** I created additional features such as Exponential Moving Averages (EMA_50, EMA_200), Daily Return, and RSI to gain deeper insights into the price trends.
+- **Feature Scalling:** Since the 'Close' prices was not normally distributed, I applied the **Min-Max Scaler** to normalize the data. This transformed the values into a range between 0 and 1, ensuring the model could better learn from the data.
+- **Splitting Data into Training & Testing Sets:** The data was split into **80% training** and **20% testing**. This division allowed the model to learn from the majority of the data while being evaluated on a separate testing set, ensuring it can generalize well to new, unseen data.
+
+---
+
+## 7. Data Analysis
 
 ### Closing Price Over Time
 
@@ -203,7 +206,7 @@ Volatility measures how much prices fluctuate over time. Higher volatility indic
 ![image](https://github.com/user-attachments/assets/9dee60b9-23b5-455b-87ac-80c2d21959c4)
 
 
-## 7. Implementation
+## 8. Implementation
 
 ### **Checking for Stationarity**
 
@@ -281,7 +284,7 @@ For LSTM models, we use a sliding window approach (look_back = 5) to create 3D t
 
 ---
 
-## 7. Model Predictions
+## 9. Model Predictions
 
 ### **Random Forest**
 - **Actual vs Predicted Prices:**
@@ -317,7 +320,7 @@ For LSTM models, we use a sliding window approach (look_back = 5) to create 3D t
 
 ---
 
-## 8. Model Evaluation
+## 10. Model Evaluation
 
 ### **Metrics**
 
@@ -354,7 +357,7 @@ Based on these metrics, **LSTM** emerges as the best-performing model for foreca
 
 ---
 
-## 9. Model Deployment: 
+## 11. Model Deployment: 
 
 Deployed the model using streamlit 
 
