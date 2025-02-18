@@ -87,17 +87,10 @@ These observations highlight the volatility and price distributions for **BTC**,
  
 ### Frequency Distribution
 
-![image](https://github.com/user-attachments/assets/f23ecb4f-50f5-4284-8678-7e73b4b8968a)
-
-![image](https://github.com/user-attachments/assets/423d0117-50ee-43a1-81b7-1b0e57c0e8b4)
-
-![image](https://github.com/user-attachments/assets/b0c3f186-2b01-4888-b9ae-0f8f30d4a9eb)
+![image](https://github.com/user-attachments/assets/1a12dba9-b3a9-43bc-b7a4-85276e753dce)
 
 - The close price shows a **right-skewed distribution**, indicating that lower prices were more frequent.
 - There are **multiple peaks**, suggesting different historical price levels or market phases.  
-- The trading volume is also **highly skewed**, with most transactions occurring at lower volumes.  
-- There are **a few extreme values**, indicating periods of unusually high trading activity.
-- The **steep decline** suggests that the majority of trading days had relatively low volume compared to the outliers.
 
 ### Correlation Martix
 
