@@ -330,8 +330,8 @@ For LSTM models, we use a sliding window approach (look_back = 5) to create 3D t
 | **Model**          | **MAE**    | **RMSE**   |
 |--------------------|------------|------------|
 | **LSTM**           | 2147.02    | 2832.39    |
-| **Random Forest**  | 4853.04    | 11581.81   |
-| **XGBoost**        | 5498.91    | 12441.40   |
+| **Random Forest**  | 4761.72    | 11494.35   |
+| **XGBoost**        | 5357.49    | 12270.71   |
 | **Prophet**        | 11342.16   | 15621.58   |
 | **ARIMA**          | 26449.34   | 34524.33   |
 | **SARIMA**         | 15283.65   | 20759.14   |
