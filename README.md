@@ -112,7 +112,8 @@ To prepare the dataset for analysis and model training, the following preprocess
 
 ![image](https://github.com/user-attachments/assets/93fb0b22-489e-40ab-bb68-aaca3e100d6f)
 
-![image](https://github.com/user-attachments/assets/110a0af9-0727-4420-afa2-9557122c901d)
+![image](https://github.com/user-attachments/assets/567309a6-695a-461b-ac30-ce357237217b)
+
 
 **1️⃣ Bitcoin (BTC) Dominates Price Trends**
 - **BTC (orange)** remains the highest-priced cryptocurrency.
@@ -129,7 +130,8 @@ To prepare the dataset for analysis and model training, the following preprocess
 
 ### Market Capitalization
 
-![image](https://github.com/user-attachments/assets/94e51c04-1735-49b4-9b89-10b4f84755ae)
+![image](https://github.com/user-attachments/assets/f8492bd6-fff0-4b25-9de9-a6b1bde9f2ae)
+
 
 **1️⃣ Bitcoin (BTC) Leads the Market**
 - **BTC (orange)** has the highest market capitalization, peaking above **$2 trillion**.
@@ -151,7 +153,8 @@ To prepare the dataset for analysis and model training, the following preprocess
 
 ### Trading Volume Analysis
 
-![image](https://github.com/user-attachments/assets/a7f1b1bd-d633-4334-aea8-414bf487bac9)
+![image](https://github.com/user-attachments/assets/571be646-4d9c-463d-87f6-07b6371a8ef0)
+
 
 1️⃣ Bitcoin (BTC) Dominates Trading Volume  
 - **BTC (orange)** has the highest trading volume over time, especially during market peaks.  
@@ -172,13 +175,14 @@ To prepare the dataset for analysis and model training, the following preprocess
 
 ### Moving Averages (EMA)
 
-![image](https://github.com/user-attachments/assets/24e74e02-394d-4e3a-89b5-b479ef434f01)
+![image](https://github.com/user-attachments/assets/5f68a070-e34c-4bde-86b3-1a9ac4580a82)
 
 ### Volatility Analysis Using Rolling Standard Deviation
 
 Volatility measures how much prices fluctuate over time. Higher volatility indicates higher risk but also higher potential returns.
 
-![image](https://github.com/user-attachments/assets/4e21b0e6-8a7a-43b1-9f65-808c4adb9ce3)
+![image](https://github.com/user-attachments/assets/f5caeb7d-c419-4f67-aeea-e4df04ac0d12)
+
 
  1️⃣ Bitcoin (BTC) Shows the Most Stability  
 - BTC (orange) maintains relatively low volatility over time.  
@@ -199,7 +203,24 @@ Volatility measures how much prices fluctuate over time. Higher volatility indic
 ![image](https://github.com/user-attachments/assets/9dee60b9-23b5-455b-87ac-80c2d21959c4)
 
 
-## 8. Implementation
+## 8. Model Development
+My approach involves testing and comparing several types of models to determine the best fit for cryptocurrency price prediction:
+
+- Machine Learning Models: Random Forest & XGBoost
+  - Capture complex, non-linear relationships
+- Time Series Models: ARIMA, SARIMA & Prophet
+  - Model trends, seasonality, and cyclical patterns in the data.
+- Deep Learning Models: Long Short Term Memory (LSTM)
+  - Leverage recurrent neural networks to capture long-term dependencies in    sequential data.
+
+### Machine Learning Models
+
+**Random Forest**
+- Random Forest algorithm works by creating a collection of multiple decision trees, each trained on a slightly different random subset of the data.
+- It then combines their predictions to reach a final result, effectively averaging the outputs of these trees to produce a more accurate prediction than any single tree alone; this approach is called "ensemble learning" and helps to reduce overfitting by introducing diversity among the trees.
+
+ ![image](https://github.com/user-attachments/assets/7578abd1-e7e2-4fbb-92d3-7c6bb9165d83)
+
 
 ### **Checking for Stationarity**
 
