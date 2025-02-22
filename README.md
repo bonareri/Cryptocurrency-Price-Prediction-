@@ -82,24 +82,7 @@ These observations highlight the volatility and price distributions for **BTC**,
 
 ![image](https://github.com/user-attachments/assets/2c4751e0-4b73-4b84-a3ac-862efc82e0df)
 
-## 6. Data Preprocessing
-
-To prepare the dataset for analysis and model training, the following preprocessing steps were performed:
-
-- **Feature Engineering:** I created additional features such as Exponential Moving Averages (EMA_50, EMA_200), Daily Return, and RSI to gain deeper insights into the price trends.
-- **Feature Scalling:** Since the 'Close' prices was not normally distributed, I applied the **Min-Max Scaler** to normalize the data. This transformed the values into a range between 0 and 1, ensuring the model could better learn from the data.
-- **Data Splitting**
-  - **Chronological Order:**  
-    Data is sorted by date to preserve temporal relationships.
-
-  - **80/20 Split:**  
-    - **Training Set (80%):** Earliest data for model learning.  
-    - **Test Set (20%):** Most recent data for evaluation.  
-
-      ![Data Splitting](https://github.com/user-attachments/assets/4890909f-c3c7-41bf-b97c-669e3033f895)
-
-
-## 7. Data Analysis
+## 6. Data Analysis
 
 ### Closing Price Over Time
 
@@ -195,7 +178,22 @@ Volatility measures how much prices fluctuate over time. Higher volatility indic
 
 ![image](https://github.com/user-attachments/assets/9dee60b9-23b5-455b-87ac-80c2d21959c4)
 
+## 6. Data Preprocessing
 
+To prepare the dataset for analysis and model training, the following preprocessing steps were performed:
+
+- **Feature Engineering:** I created additional features such as Exponential Moving Averages (EMA_50, EMA_200), Daily Return, and RSI to gain deeper insights into the price trends.
+- **Feature Scalling:** Since the 'Close' prices was not normally distributed, I applied the **Min-Max Scaler** to normalize the data. This transformed the values into a range between 0 and 1, ensuring the model could better learn from the data.
+- **Data Splitting**
+  - **Chronological Order:**  
+    Data is sorted by date to preserve temporal relationships.
+
+  - **80/20 Split:**  
+    - **Training Set (80%):** Earliest data for model learning.  
+    - **Test Set (20%):** Most recent data for evaluation.  
+
+      ![Data Splitting](https://github.com/user-attachments/assets/4890909f-c3c7-41bf-b97c-669e3033f895)
+      
 ## 8. Model Development
 My approach involves testing and comparing several types of models to determine the best fit for cryptocurrency price prediction:
 
