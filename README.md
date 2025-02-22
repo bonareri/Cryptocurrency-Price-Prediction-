@@ -385,46 +385,6 @@ LSTM Cell Architecture
 
 ![image](https://github.com/user-attachments/assets/53f7d205-bf38-4adb-bc2e-0ca4009c7baa)
 
-- Developed an LSTM network with two layers (50 and 40 units) and dropout regularization, followed by dense layers for regression.
-
-- Compiled the model with a low learning rate and mean squared error as the loss function.
-
-- Employed early stopping (patience of 10) to prevent overfitting.
-
-- Trained separate models for Bitcoin, Ethereum, and Solana using a batch size of 64 over up to 100 epochs, storing training histories for analysis.
-
-#### LSTM Model Performance
-
-![image](https://github.com/user-attachments/assets/e6c274ea-b5dd-44d2-8056-807f89b3d4cf)
-
-- The loss curves show a steady and consistent decrease, indicating that the models are learning effectively.
-- The training and validation loss curves are closely aligned, meaning the models generalize well to unseen data.
-- The models reach a near-zero plateau, suggesting they have converged and additional training may not bring significant improvements.
-
-#### LSM Model Predictions
-
-<div style="display: flex; justify-content: center; gap: 10px;">
-  <img src="https://github.com/user-attachments/assets/08ad6e78-d58a-4db9-ad0d-e553f4bf3558" style="height: 200px; object-fit: cover;">
-  <img src="https://github.com/user-attachments/assets/a0da0b5b-a504-40c4-acf5-109a83fc0b35" style="height: 200px; object-fit: cover;">
-  <img src="https://github.com/user-attachments/assets/c8ff1783-cdad-41f5-ba78-1cbf219cff51" style="height: 200px; object-fit: cover;">
-</div>
-
-
-<div style="text-align: center; margin-top: 10px;">
-  <img src="https://github.com/user-attachments/assets/ddf62fb7-3e76-4705-b4c1-63cd2dc1980e" width="20%">
-</div>
-
-### **Time Series Windowing (Sequence Generation)**
-
-For LSTM models, we use a sliding window approach (look_back = 5) to create 3D tensors:
-- **Samples:** Number of sequences.
-- **Timesteps:** Length of the sliding window.
-- **Features:** Number of features per timestep.
-
----
-
-### **LSTM Model Architecture**
-
 - **LSTM Layers:**  
   - **Layer 1:** 50 units, returns sequences, uses tanh activation with L2 regularization.
   - **Layer 2:** 40 units, final output state, tanh activation with L2 regularization.
@@ -439,7 +399,38 @@ For LSTM models, we use a sliding window approach (look_back = 5) to create 3D t
 - **Training Details:**  
   - **Optimizer:** Adam with a learning rate of 0.0005  
   - **Loss Function:** Mean Squared Error (MSE)  
-  - **Epochs:** Up to 100 with early stopping (patience = 10, restore best weights)  
+  - **Epochs:** Up to 100 with early stopping (patience = 10, restore best weights)
+    
+- Trained separate models for Bitcoin, Ethereum, and Solana using a batch size of 64 over up to 100 epochs, storing training histories for analysis.
+
+#### LSTM Model Performance
+
+![image](https://github.com/user-attachments/assets/e6c274ea-b5dd-44d2-8056-807f89b3d4cf)
+
+- The loss curves show a steady and consistent decrease, indicating that the models are learning effectively.
+- The training and validation loss curves are closely aligned, meaning the models generalize well to unseen data.
+- The models reach a near-zero plateau, suggesting they have converged and additional training may not bring significant improvements.
+
+#### LSM Model Predictions
+
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
+  <img src="https://github.com/user-attachments/assets/08ad6e78-d58a-4db9-ad0d-e553f4bf3558" style="width: 48%; height: 200px; object-fit: cover;">
+  <img src="https://github.com/user-attachments/assets/a0da0b5b-a504-40c4-acf5-109a83fc0b35" style="width: 48%; height: 200px; object-fit: cover;">
+  <img src="https://github.com/user-attachments/assets/c8ff1783-cdad-41f5-ba78-1cbf219cff51" style="width: 48%; height: 200px; object-fit: cover;">
+  <img src="https://github.com/user-attachments/assets/ddf62fb7-3e76-4705-b4c1-63cd2dc1980e" style="width: 28%; height: 200px; object-fit: cover;">
+</div>
+
+
+### **Time Series Windowing (Sequence Generation)**
+
+For LSTM models, we use a sliding window approach (look_back = 5) to create 3D tensors:
+- **Samples:** Number of sequences.
+- **Timesteps:** Length of the sliding window.
+- **Features:** Number of features per timestep.
+
+---
+
+### **LSTM Model Architecture**
 
   ![image](https://github.com/user-attachments/assets/fcde4ce9-27a3-4c25-84fe-fe95598f7249)
 
