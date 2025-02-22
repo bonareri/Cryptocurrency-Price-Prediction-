@@ -174,15 +174,11 @@ Volatility measures how much prices fluctuate over time. Higher volatility indic
 - 2020: Pandemic-driven uncertainty → Increased market swings.  
 - 2021: **Bull run & corrections** → Highest volatility levels observed.
 
-### Relative Strength Index
-
-![image](https://github.com/user-attachments/assets/9dee60b9-23b5-455b-87ac-80c2d21959c4)
-
 ## 7. Data Preprocessing
 
 To prepare the dataset for analysis and model training, the following preprocessing steps were performed:
 
-- **Feature Engineering:** I created additional features such as Exponential Moving Averages (EMA_50, EMA_200), Daily Return, and RSI to gain deeper insights into the price trends.
+- **Feature Engineering:** I created additional features such as Exponential Moving Averages (EMA_50, EMA_200) and Daily Return to gain deeper insights into the price trends.
 - **Feature Scalling:** Since the 'Close' prices was not normally distributed, I applied the **Min-Max Scaler** to normalize the data. This transformed the values into a range between 0 and 1, ensuring the model could better learn from the data.
 - **Data Splitting**
   - **Chronological Order:**  
