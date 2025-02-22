@@ -88,7 +88,15 @@ To prepare the dataset for analysis and model training, the following preprocess
 
 - **Feature Engineering:** I created additional features such as Exponential Moving Averages (EMA_50, EMA_200), Daily Return, and RSI to gain deeper insights into the price trends.
 - **Feature Scalling:** Since the 'Close' prices was not normally distributed, I applied the **Min-Max Scaler** to normalize the data. This transformed the values into a range between 0 and 1, ensuring the model could better learn from the data.
-- **Splitting Data into Training & Testing Sets:** The data was split into **80% training** and **20% testing**. This division allowed the model to learn from the majority of the data while being evaluated on a separate testing set, ensuring it can generalize well to new, unseen data.
+- **Data Splitting**
+  - **Chronological Order:**  
+    Data is sorted by date to preserve temporal relationships.
+
+  - **80/20 Split:**  
+    - **Training Set (80%):** Earliest data for model learning.  
+    - **Test Set (20%):** Most recent data for evaluation.  
+
+      ![Data Splitting](https://github.com/user-attachments/assets/4890909f-c3c7-41bf-b97c-669e3033f895)
 
 
 ## 7. Data Analysis
@@ -365,9 +373,13 @@ y: The target variable (values to forecast).
   <img src="https://github.com/user-attachments/assets/3ad97d31-b6bd-4cf9-a9f2-9b00dde24d9d" style="width: 48%; height: auto;">
 </div>
 
-<div style="text-align: right;">
-  <img src="https://github.com/user-attachments/assets/3ee4cc21-376e-439e-891a-8021fc3a3f1a" width="25%">
-</div>
+**LSTM Crypto model evaluation**
+
+| **Model**          | **MAE**    | **RMSE**   |
+|--------------------|------------|------------|
+| **Bitcoin**        | 2147.02    | 2832.39    |
+| **Ethereum**       |  125.98    | 174.23     |
+| **Solana**         |  10.47     | 13.71      |
 
 ### LSTM (Long Short-Term Memory)
 - LSTM is a type of Recurrent Neural Network (RNN) used to capture long-term dependencies in sequential data. 
@@ -421,33 +433,6 @@ LSTM Cell Architecture
 </div>
 
 
-
-### **Time Series Windowing (Sequence Generation)**
-
-For LSTM models, we use a sliding window approach (look_back = 5) to create 3D tensors:
-- **Samples:** Number of sequences.
-- **Timesteps:** Length of the sliding window.
-- **Features:** Number of features per timestep.
-
----
-
-### **LSTM Model Architecture**
-
-  ![image](https://github.com/user-attachments/assets/fcde4ce9-27a3-4c25-84fe-fe95598f7249)
-
----
-
-### **Data Splitting**
-
-- **Chronological Order:**  
-  Data is sorted by date to preserve temporal relationships.
-
-- **80/20 Split:**  
-  - **Training Set (80%):** Earliest data for model learning.  
-  - **Test Set (20%):** Most recent data for evaluation.  
-  ![Data Splitting](https://github.com/user-attachments/assets/4890909f-c3c7-41bf-b97c-669e3033f895)
-
-
 ## 10. Model Evaluation
 
 ### **Metrics**
@@ -470,23 +455,29 @@ For LSTM models, we use a sliding window approach (look_back = 5) to create 3D t
 | **Prophet**        | 11342.16   | 15621.58   |
 | **ARIMA**          | 26449.34   | 34524.33   |
 | **SARIMA**         | 15283.65   | 20759.14   |
-| **Tuned SARIMA**   | 30186.72   | 38668.71   |
-
-**LSTM Crypto model evaluation**
-
-| **Model**          | **MAE**    | **RMSE**   |
-|--------------------|------------|------------|
-| **Bitcoin**        | 2147.02    | 2832.39    |
-| **Ethereum**       |  125.98    | 174.23     |
-| **Solana**         |  10.47     | 13.71      |
 
 **Conclusion:**  
 Based on these metrics, **LSTM** emerges as the best-performing model for forecasting Bitcoin prices with the lowest MAE and RMSE values.
 
----
+## 11. Challenges
+- Extreme Market Volatility:
+  - Rapid, large price swings make it challenging to establish stable trends and reliable predictions.
+- Regulatory Uncertainty:
+  - Shifts in government policies can cause sudden market changes, adding significant unpredictability.
+- Influence of Market Sentiment:
+  - Public opinion, driven by social media and news, can unexpectedly affect prices, complicating prediction models.
 
-## 11. Model Deployment: 
+## 12. Model Deployment: 
+**Streamlit app**
 
-Deployed the model using streamlit 
+![image](https://github.com/user-attachments/assets/a2693de9-a311-4055-b01f-042ae69ae9fb)
 
-  
+- Streamlit link: https://share.streamlit.io/
+
+## 13. Further Development
+- Integrate Market Sentiment Analysis:
+  - Incorporate real-time sentiment data from social media and news, using NLP techniques to gauge public mood as an early indicator of market shifts.
+- Real-Time Data Processing:
+  - Setting up a robust pipeline to ensure that the model updates every hour, capturing the latest market data without delays.
+- Visualization & Monitoring:
+  - Lastly, I'll develop a dashboard to visualize real-time predictions, sentiment trends, and key performance metrics, allowing me to monitor and refine the model effectively.
