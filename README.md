@@ -316,6 +316,40 @@ SARIMA(p,d,q)×(P,D,Q,s)
   <img src="https://github.com/user-attachments/assets/dca441b1-4044-485f-b68e-8ee47b71feb0" width="45%">
 </div>
 
+- Before differencing, there is a clear upward trend, but after differencing, the trend became more stable with gradual fluctuations.
+- There is a strong seasonal pattern and afterwards the repeating pattern is still visible, indicating that seasonality remains present.
+- Additionally, the residuals appear more stationary after differencing, suggesting that the data is closer to meeting the assumptions of stationarity.
+
+**ARIMA Model Development**
+![image](https://github.com/user-attachments/assets/c937d402-72b4-4883-ac75-8e6b953804c4)
+
+- AR(1) coefficient 0.9996: Strong positive influence of past values on future values. 
+- MA(1) coefficient -0.0180: Minimal negative effect of past errors on the current value. 
+- sigma² (variance of residuals): Very small (0.0015), indicating a well-fitted model.
+
+**SARIMA Model Development**
+![image](https://github.com/user-attachments/assets/1999f176-c3c0-49f5-ac79-a154b3ffb5a6)
+- AR(1) coefficient 1.0001: Strong positive influence of past values on future values.
+- MA(1) coefficient -0.0185: Small negative effect of past errors on the current value.
+- Seasonal AR(12) coefficient -0.1530: Weak inverse seasonal dependency.
+- Seasonal MA(12) coefficient 0.1442: Weak positive seasonal effect.
+
+### Model Predictions and Evaluation
+<div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
+  <img src="https://github.com/user-attachments/assets/64f024d1-bcef-46bb-af90-cff3a5e39c22" width="55%">
+  <img src="https://github.com/user-attachments/assets/e82d0dbf-d234-4b7a-8d0b-a0c0d8e089fe" width="55%">
+</div>
+
+<div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-top: 10px;">
+  <img src="https://github.com/user-attachments/assets/1202f095-79e5-490d-b98e-bdfe405459b3" width="20%">
+  <img src="https://github.com/user-attachments/assets/b1f86c0f-8315-4ca5-8333-ae93b9b895d2" width="20%">
+</div>
+
+
+
+
+
+
 ### **Time Series Windowing (Sequence Generation)**
 
 For LSTM models, we use a sliding window approach (look_back = 5) to create 3D tensors:
