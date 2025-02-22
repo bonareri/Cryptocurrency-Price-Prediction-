@@ -1,11 +1,8 @@
 # Cryptocurrecncy Price Prediction
----
 
 ## 1. Introduction
 
 This project aims to build a Cryptocurrency Price Prediction system to help traders and investors make data-driven decisions. Cryptocurrency markets are highly volatile, and predicting price movements can minimize risks, maximize profits, and enhance trading strategies.
-
----
 
 ## 2. Problem Statement 
 
@@ -93,7 +90,6 @@ To prepare the dataset for analysis and model training, the following preprocess
 - **Feature Scalling:** Since the 'Close' prices was not normally distributed, I applied the **Min-Max Scaler** to normalize the data. This transformed the values into a range between 0 and 1, ensuring the model could better learn from the data.
 - **Splitting Data into Training & Testing Sets:** The data was split into **80% training** and **20% testing**. This division allowed the model to learn from the majority of the data while being evaluated on a separate testing set, ensuring it can generalize well to new, unseen data.
 
----
 
 ## 7. Data Analysis
 
@@ -231,26 +227,40 @@ Hyperparameters
 
 #### Machine learning Model Evaluation
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/0af46f87-e27c-4baa-b44a-d79e1cee3841" width="45%">
-  <img src="https://github.com/user-attachments/assets/e8f5ea9a-fd5f-44e5-9754-979c4f3c9f59" width="45%">
+  <img src="https://github.com/user-attachments/assets/0af46f87-e27c-4baa-b44a-d79e1cee3841" width="50%">
+  <img src="https://github.com/user-attachments/assets/e8f5ea9a-fd5f-44e5-9754-979c4f3c9f59" width="50%">
 </div>
 
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/40af424a-7389-4a6e-b47f-c9ebc3d735ee" width="45%">
-  <img src="https://github.com/user-attachments/assets/4e5a8b74-43bb-4533-9606-ddbb26f9f4d0" width="45%">
+  <img src="https://github.com/user-attachments/assets/40af424a-7389-4a6e-b47f-c9ebc3d735ee" width="30%">
+  <img src="https://github.com/user-attachments/assets/4e5a8b74-43bb-4533-9606-ddbb26f9f4d0" width="30%">
 </div>
 
+#### Model Predictions
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/5b9ef78b-b361-4043-94e6-e9d1441ddb13" width="50%">
+  <img src="https://github.com/user-attachments/assets/5055fd2e-f355-4e03-94ad-f0ab7982f206" width="50%">
+</div>
 
+### Time Series Models
+#### Autoregressive Integrated Moving Average (ARIMA)
+A statistical analysis model that predicts future values based on historical data. It has three main components: 
+- AR (AutoRegressive): Uses past values to predict the future.
+- I (Integrated): The differencing of raw observations to make the time series stationary.
+- MA (Moving Average): Uses past errors to predict the future.
+  
+Key Parameters of ARIMA
+- p: Number of past values (lags).
+- d: Degree of differencing (to make data stationary).
+- q: Moving average window size.
+  
+#### SARIMA (Seasonal AutoRegressive Integrated Moving Average)
+An extension of ARIMA that accounts for seasonality in time series data. It is represented as:
+SARIMA(p,d,q)×(P,D,Q,s)
 
+![image](https://github.com/user-attachments/assets/25f53d72-2a9b-4ab1-adae-0da933d0c08d)
 
-
-
-
-
-
-
-
-### **Checking for Stationarity**
+**Checking for Stationarity**
 
 - **Visual Inspection (Rolling Mean & Standard Deviation):**  
   ![Rolling Statistics](https://github.com/user-attachments/assets/023abafb-c221-466c-b3b5-ded6b156e080)
@@ -261,27 +271,45 @@ Hyperparameters
     - p-value: 0.9725  
     → *Non-stationary*
     
-  - **Differenced Series:**  
-    - ADF Statistic: -62.8500  
-    - p-value: 0.0000  
-    → *Stationary*
+**Transformations for Stationarity**
 
----
-
-### **Transformations for Stationarity**
-
-- **Log Transformation:**  
-  Stabilizes variance and reduces the impact of outliers.  
-  ![Log Transformation](https://github.com/user-attachments/assets/104fc55a-eb2e-410c-81b8-57a15d62c3cf)
+- **Log Transformation:**
+ - Applied log transformation to stabilize the variance and reduce the effect of large fluctuations in the data.
+ - This helped smooth out exponential growth trends.
 
 - **Differencing:**  
-  Removes trends, further stabilizing the series.
+  - Applied first-order differencing to remove trends in the data.
+  - Dickey-Fuller (ADF) Test to confirm that the transformed data met the stationarity assumption.
+
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/95046dac-709b-421d-bd69-ff08dac9b9d7" width="45%">
+  <img src="https://github.com/user-attachments/assets/d2747dd4-f524-4a60-aaf8-6416b2a8ca0d" width="45%">
+</div>   
+
+- **Differenced Series:**  
+  - ADF Statistic: -62.8500  
+  - p-value: 0.0000  
+  → *Stationary*
+
+### Autocorrelations (ACF) and Partial Autocorrelations (PACF) Plot
+![image](https://github.com/user-attachments/assets/37769808-1563-4172-a7e0-dd2d91981372)
+
+![image](https://github.com/user-attachments/assets/a7deada9-4cda-48a6-b6f1-caa1d6788761)
+
+- ACF shows a sharp drop after lag 1 suggesting (Moving Average order = 1).
+  
+![image](https://github.com/user-attachments/assets/8f1c534f-5d3e-4480-82f6-68cc8e45eab9)
+
+- PACF cuts off after lag 1 suggesting  (Autoregressive order = 1).
+-  The ACF and PACF plot drops off quickly (with no strong pattern or slow decay), meaning the data is stationary after differencing.
+-  This confirms that the differencing step (d = 1) was effective in removing trends.
 
 ### **Seasonality Analysis:**  
 
-![Seasonal Decomposition](https://github.com/user-attachments/assets/e7b93bc0-1a5a-4926-a8da-6adfcc496281)
-
----
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/501b8ce2-6f36-487a-9114-0955f8219bef" width="50%">
+  <img src="https://github.com/user-attachments/assets/dca441b1-4044-485f-b68e-8ee47b71feb0" width="50%">
+</div>
 
 ### **Time Series Windowing (Sequence Generation)**
 
