@@ -383,7 +383,7 @@ LSTM Cell Architecture
 
 #### LSTM Model Development
 
-<img src="https://github.com/user-attachments/assets/53f7d205-bf38-4adb-bc2e-0ca4009c7baa" style="width: 40%; height: auto;">
+<img src="https://github.com/user-attachments/assets/53f7d205-bf38-4adb-bc2e-0ca4009c7baa" style="width: 60%; height: auto;">
 
 - **LSTM Layers:**  
   - **Layer 1:** 50 units, returns sequences, uses tanh activation with L2 regularization.
