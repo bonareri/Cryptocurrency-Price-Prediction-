@@ -360,9 +360,9 @@ y: The target variable (values to forecast).
 3. Making future prediction , I used a period of one year
 
 #### Prohet model evaluation and predictions
-<div align="center">
-  <img src="https://github.com/user-attachments/assets/3e01e2ad-606e-4522-b312-78fafbbbc799" width="48%">
-  <img src="https://github.com/user-attachments/assets/3ad97d31-b6bd-4cf9-a9f2-9b00dde24d9d" width="48%">
+<div style="display: flex; justify-content: center; gap: 10px;">
+  <img src="https://github.com/user-attachments/assets/3e01e2ad-606e-4522-b312-78fafbbbc799" style="width: 48%; height: auto;">
+  <img src="https://github.com/user-attachments/assets/3ad97d31-b6bd-4cf9-a9f2-9b00dde24d9d" style="width: 48%; height: auto;">
 </div>
 
 <div style="text-align: right;">
@@ -383,7 +383,7 @@ LSTM Cell Architecture
 
 #### LSTM Model Development
 
-![image](https://github.com/user-attachments/assets/53f7d205-bf38-4adb-bc2e-0ca4009c7baa)
+<img src="https://github.com/user-attachments/assets/53f7d205-bf38-4adb-bc2e-0ca4009c7baa" style="width: 40%; height: auto;">
 
 - **LSTM Layers:**  
   - **Layer 1:** 50 units, returns sequences, uses tanh activation with L2 regularization.
