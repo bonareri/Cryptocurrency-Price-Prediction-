@@ -230,11 +230,16 @@ Hyperparameters
 - Random state of 42 for consistent results.
 
 #### Machine learning Model Evaluation
-![image](https://github.com/user-attachments/assets/0af46f87-e27c-4baa-b44a-d79e1cee3841)
-![image](https://github.com/user-attachments/assets/e8f5ea9a-fd5f-44e5-9754-979c4f3c9f59)
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/0af46f87-e27c-4baa-b44a-d79e1cee3841" width="45%">
+  <img src="https://github.com/user-attachments/assets/e8f5ea9a-fd5f-44e5-9754-979c4f3c9f59" width="45%">
+</div>
 
-![image](https://github.com/user-attachments/assets/40af424a-7389-4a6e-b47f-c9ebc3d735ee)
-![image](https://github.com/user-attachments/assets/4e5a8b74-43bb-4533-9606-ddbb26f9f4d0)
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/40af424a-7389-4a6e-b47f-c9ebc3d735ee" width="45%">
+  <img src="https://github.com/user-attachments/assets/4e5a8b74-43bb-4533-9606-ddbb26f9f4d0" width="45%">
+</div>
+
 
 
 
