@@ -376,13 +376,7 @@ y: The target variable (values to forecast).
   <img src="https://github.com/user-attachments/assets/3ad97d31-b6bd-4cf9-a9f2-9b00dde24d9d" style="width: 48%; height: auto;">
 </div>
 
-**LSTM Crypto model evaluation**
-
-| **Model**          | **MAE**    | **RMSE**   |
-|--------------------|------------|------------|
-| **Bitcoin**        | 2147.02    | 2832.39    |
-| **Ethereum**       |  125.98    | 174.23     |
-| **Solana**         |  10.47     | 13.71      |
+<img src="https://github.com/user-attachments/assets/461c361b-0023-4fa2-94c0-760fe20784fd" width="20%">
 
 ### LSTM (Long Short-Term Memory)
 - LSTM is a type of Recurrent Neural Network (RNN) used to capture long-term dependencies in sequential data. 
@@ -429,12 +423,19 @@ LSTM Cell Architecture
 
 #### LSM Model Predictions
 
-<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
-  <img src="https://github.com/user-attachments/assets/08ad6e78-d58a-4db9-ad0d-e553f4bf3558" style="width: 48%; height: 250px; object-fit: cover;">
-  <img src="https://github.com/user-attachments/assets/a0da0b5b-a504-40c4-acf5-109a83fc0b35" style="width: 48%; height: 250px; object-fit: cover;">
-  <img src="https://github.com/user-attachments/assets/c8ff1783-cdad-41f5-ba78-1cbf219cff51" style="width: 48%; height: 250px; object-fit: cover;">
-  <img src="https://github.com/user-attachments/assets/ddf62fb7-3e76-4705-b4c1-63cd2dc1980e" style="width: 25%; height: 180px; object-fit: cover;">
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px;">
+  <img src="https://github.com/user-attachments/assets/08ad6e78-d58a-4db9-ad0d-e553f4bf3558" style="width: 49%; height: 300px; object-fit: cover;">
+  <img src="https://github.com/user-attachments/assets/a0da0b5b-a504-40c4-acf5-109a83fc0b35" style="width: 49%; height: 300px; object-fit: cover;">
+  <img src="https://github.com/user-attachments/assets/c8ff1783-cdad-41f5-ba78-1cbf219cff51" style="width: 49%; height: 300px; object-fit: cover;">
 </div>
+ 
+**LSTM Crypto model evaluation**
+
+| **Model**          | **MAE**    | **RMSE**   |
+|--------------------|------------|------------|
+| **Bitcoin**        | 2147.02    | 2832.39    |
+| **Ethereum**       |  125.98    | 174.23     |
+| **Solana**         |  10.47     | 13.71      |
 
 
 ## 10. Model Evaluation
