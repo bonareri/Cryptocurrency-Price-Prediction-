@@ -346,14 +346,16 @@ SARIMA(p,d,q)×(P,D,Q,s)
 - Seasonal MA(12) coefficient 0.1442: Weak positive seasonal effect.
 
 ### Model Predictions and Evaluation
-<div align="center">
-  <img src="https://github.com/user-attachments/assets/64f024d1-bcef-46bb-af90-cff3a5e39c22" width="50%">
-  <img src="https://github.com/user-attachments/assets/e82d0dbf-d234-4b7a-8d0b-a0c0d8e089fe" width="50%">
+<!-- First Row -->
+<div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 10px;">
+  <img src="https://github.com/user-attachments/assets/64f024d1-bcef-46bb-af90-cff3a5e39c22" style="width: 50%; height: auto;">
+  <img src="https://github.com/user-attachments/assets/e82d0dbf-d234-4b7a-8d0b-a0c0d8e089fe" style="width: 50%; height: auto;">
 </div>
 
-<div align="center">
-  <img src="https://github.com/user-attachments/assets/1202f095-79e5-490d-b98e-bdfe405459b3" width="25%">
-  <img src="https://github.com/user-attachments/assets/b1f86c0f-8315-4ca5-8333-ae93b9b895d2" width="25%">
+<!-- Second Row -->
+<div style="display: flex; justify-content: center; gap: 10px;">
+  <img src="https://github.com/user-attachments/assets/1202f095-79e5-490d-b98e-bdfe405459b3" style="width: 25%; height: auto;">
+  <img src="https://github.com/user-attachments/assets/b1f86c0f-8315-4ca5-8333-ae93b9b895d2" style="width: 25%; height: auto;">
 </div>
 
 ### FB Prophet (Facebook Prophet)
