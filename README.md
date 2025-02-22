@@ -404,10 +404,11 @@ LSTM Cell Architecture
 #### LSM Model Predictions
 
 <div style="display: flex; justify-content: center; gap: 10px;">
-  <img src="https://github.com/user-attachments/assets/08ad6e78-d58a-4db9-ad0d-e553f4bf3558" width="30%">
-  <img src="https://github.com/user-attachments/assets/a0da0b5b-a504-40c4-acf5-109a83fc0b35" width="30%">
-  <img src="https://github.com/user-attachments/assets/c8ff1783-cdad-41f5-ba78-1cbf219cff51" width="30%">
+  <img src="https://github.com/user-attachments/assets/08ad6e78-d58a-4db9-ad0d-e553f4bf3558" style="height: 200px; object-fit: cover;">
+  <img src="https://github.com/user-attachments/assets/a0da0b5b-a504-40c4-acf5-109a83fc0b35" style="height: 200px; object-fit: cover;">
+  <img src="https://github.com/user-attachments/assets/c8ff1783-cdad-41f5-ba78-1cbf219cff51" style="height: 200px; object-fit: cover;">
 </div>
+
 
 <div style="text-align: center; margin-top: 10px;">
   <img src="https://github.com/user-attachments/assets/ddf62fb7-3e76-4705-b4c1-63cd2dc1980e" width="20%">
@@ -454,43 +455,6 @@ For LSTM models, we use a sliding window approach (look_back = 5) to create 3D t
   - **Test Set (20%):** Most recent data for evaluation.  
   ![Data Splitting](https://github.com/user-attachments/assets/4890909f-c3c7-41bf-b97c-669e3033f895)
 
----
-
-## 9. Model Predictions
-
-### **Random Forest**
-- **Actual vs Predicted Prices:**
-  ![image](https://github.com/user-attachments/assets/19c0219e-ea12-4dd2-b137-9eacc25564a6)
-
-### **XGBoost**
-- **Actual vs Predicted Prices:**  
-  ![image](https://github.com/user-attachments/assets/718be5c9-da6c-4366-950b-443795705611)
-
-### **ARIMA**
-- **Actual vs Predicted Prices:**  
-  ![ARIMA Results](https://github.com/user-attachments/assets/538a5c17-332f-4bf5-8eb5-6fba4045cca9)
-
-### **SARIMAX**
-- **Actual vs Predicted Prices:**  
-  ![SARIMAX Results](https://github.com/user-attachments/assets/54e9f8a0-04fa-45f6-a9f2-c7d5ce7e519e)
-
-### **Hyperparameter Tuning (SARIMAX)**
-- **Results:**  
-  ![Tuned SARIMAX Results](https://github.com/user-attachments/assets/0d8e1b5d-8e8e-4520-b97d-5f318e961b1f)
-
-### **PROPHET**
-- **Results:**  
-  ![image](https://github.com/user-attachments/assets/bd371742-e43c-4c9c-8b9c-80892b4f343b)
-
-### **LSTM**
-- **Results:**  
-  ![image](https://github.com/user-attachments/assets/0e9d6d2c-d174-47de-98be-0903172e3d12)
-  
-  ![image](https://github.com/user-attachments/assets/517cb312-e6ac-48a1-b753-257d219168ba)
-
-  ![image](https://github.com/user-attachments/assets/6d238d5c-a5e3-47d5-ac7d-b9c677610d17)
-
----
 
 ## 10. Model Evaluation
 
