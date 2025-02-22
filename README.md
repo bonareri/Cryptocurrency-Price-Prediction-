@@ -348,6 +348,26 @@ SARIMA(p,d,q)×(P,D,Q,s)
   <img src="https://github.com/user-attachments/assets/b1f86c0f-8315-4ca5-8333-ae93b9b895d2" width="25%">
 </div>
 
+**FB Prophet (Facebook Prophet)**
+Prophet is an open-source time series forecasting tool developed by Facebook (Meta). 
+It is designed to handle time series data with trends, seasonality, and holidays using an intuitive and flexible approach.
+
+Model Development
+1. Preprocessing - Prophet expects a dataframe with two columns:
+ds: The date column (datetime format).
+y: The target variable (values to forecast).
+2. Training the model
+3. Making future prediction , I used a period of one year
+
+**Prohet model evaluation and predictions**
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/3e01e2ad-606e-4522-b312-78fafbbbc799" width="48%">
+  <img src="https://github.com/user-attachments/assets/3ad97d31-b6bd-4cf9-a9f2-9b00dde24d9d" width="48%">
+</div>
+
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/3ee4cc21-376e-439e-891a-8021fc3a3f1a" width="25%">
+</div>
 
 ### **Time Series Windowing (Sequence Generation)**
 
