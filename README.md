@@ -321,14 +321,16 @@ SARIMA(p,d,q)×(P,D,Q,s)
 - Additionally, the residuals appear more stationary after differencing, suggesting that the data is closer to meeting the assumptions of stationarity.
 
 **ARIMA Model Development**
-<img src="https://github.com/user-attachments/assets/c937d402-72b4-4883-ac75-8e6b953804c4" width="50%">
+
+<img src="https://github.com/user-attachments/assets/c937d402-72b4-4883-ac75-8e6b953804c4" width="40%">
 
 - AR(1) coefficient 0.9996: Strong positive influence of past values on future values. 
 - MA(1) coefficient -0.0180: Minimal negative effect of past errors on the current value. 
 - sigma² (variance of residuals): Very small (0.0015), indicating a well-fitted model.
 
 **SARIMA Model Development**
-<img src="https://github.com/user-attachments/assets/1999f176-c3c0-49f5-ac79-a154b3ffb5a6" width="50%">
+
+<img src="https://github.com/user-attachments/assets/1999f176-c3c0-49f5-ac79-a154b3ffb5a6" width="40%">
 
 - AR(1) coefficient 1.0001: Strong positive influence of past values on future values.
 - MA(1) coefficient -0.0185: Small negative effect of past errors on the current value.
@@ -336,16 +338,16 @@ SARIMA(p,d,q)×(P,D,Q,s)
 - Seasonal MA(12) coefficient 0.1442: Weak positive seasonal effect.
 
 ### Model Predictions and Evaluation
-<table>
-  <tr>
-    <td><img src="https://github.com/user-attachments/assets/64f024d1-bcef-46bb-af90-cff3a5e39c22" width="55%"></td>
-    <td><img src="https://github.com/user-attachments/assets/e82d0dbf-d234-4b7a-8d0b-a0c0d8e089fe" width="55%"></td>
-  </tr>
-  <tr>
-    <td><img src="https://github.com/user-attachments/assets/1202f095-79e5-490d-b98e-bdfe405459b3" width="20%"></td>
-    <td><img src="https://github.com/user-attachments/assets/b1f86c0f-8315-4ca5-8333-ae93b9b895d2" width="20%"></td>
-  </tr>
-</table>
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/64f024d1-bcef-46bb-af90-cff3a5e39c22" width="47%">
+  <img src="https://github.com/user-attachments/assets/e82d0dbf-d234-4b7a-8d0b-a0c0d8e089fe" width="47%">
+</div>
+
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/1202f095-79e5-490d-b98e-bdfe405459b3" width="25%">
+  <img src="https://github.com/user-attachments/assets/b1f86c0f-8315-4ca5-8333-ae93b9b895d2" width="25%">
+</div>
+
 
 ### **Time Series Windowing (Sequence Generation)**
 
