@@ -227,10 +227,9 @@ Hyperparameters
 
 #### Machine learning Model Evaluation
 <div style="display: flex; justify-content: center;">
-  <img src="https://github.com/user-attachments/assets/0af46f87-e27c-4baa-b44a-d79e1cee3841" width="45%" style="margin-right: 10px;">
-  <img src="https://github.com/user-attachments/assets/e8f5ea9a-fd5f-44e5-9754-979c4f3c9f59" width="45%">
+  <img src="https://github.com/user-attachments/assets/0af46f87-e27c-4baa-b44a-d79e1cee3841" width="50%" style="margin-right: 10px;">
+  <img src="https://github.com/user-attachments/assets/e8f5ea9a-fd5f-44e5-9754-979c4f3c9f59" width="50%">
 </div>
-
 
 <div align="center">
   <img src="https://github.com/user-attachments/assets/40af424a-7389-4a6e-b47f-c9ebc3d735ee" width="30%">
@@ -238,10 +237,11 @@ Hyperparameters
 </div>
 
 #### Model Predictions
-<div align="center">
-  <img src="https://github.com/user-attachments/assets/5b9ef78b-b361-4043-94e6-e9d1441ddb13" width="50%">
-  <img src="https://github.com/user-attachments/assets/5055fd2e-f355-4e03-94ad-f0ab7982f206" width="50%">
+<div style="display: flex; justify-content: center;">
+  <img src="https://github.com/user-attachments/assets/5b9ef78b-b361-4043-94e6-e9d1441ddb13" width="45%" style="margin-right: 10px;">
+  <img src="https://github.com/user-attachments/assets/5055fd2e-f355-4e03-94ad-f0ab7982f206" width="45%">
 </div>
+
 
 ### Time Series Models
 #### Autoregressive Integrated Moving Average (ARIMA)
@@ -282,10 +282,10 @@ SARIMA(p,d,q)×(P,D,Q,s)
   - Applied first-order differencing to remove trends in the data.
   - Dickey-Fuller (ADF) Test to confirm that the transformed data met the stationarity assumption.
 
-<div align="center">
+<div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
   <img src="https://github.com/user-attachments/assets/95046dac-709b-421d-bd69-ff08dac9b9d7" width="45%">
   <img src="https://github.com/user-attachments/assets/d2747dd4-f524-4a60-aaf8-6416b2a8ca0d" width="45%">
-</div>   
+</div>
 
 - **Differenced Series:**  
   - ADF Statistic: -62.8500  
@@ -307,9 +307,9 @@ SARIMA(p,d,q)×(P,D,Q,s)
 
 ### **Seasonality Analysis:**  
 
-<div align="center">
-  <img src="https://github.com/user-attachments/assets/501b8ce2-6f36-487a-9114-0955f8219bef" width="50%">
-  <img src="https://github.com/user-attachments/assets/dca441b1-4044-485f-b68e-8ee47b71feb0" width="50%">
+<div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
+  <img src="https://github.com/user-attachments/assets/501b8ce2-6f36-487a-9114-0955f8219bef" width="45%">
+  <img src="https://github.com/user-attachments/assets/dca441b1-4044-485f-b68e-8ee47b71feb0" width="45%">
 </div>
 
 ### **Time Series Windowing (Sequence Generation)**
