@@ -212,7 +212,7 @@ My approach involves testing and comparing several types of models to determine 
 - Random Forest algorithm works by creating a collection of multiple decision trees, each trained on a slightly different random subset of the data.
 - It then combines their predictions to reach a final result, effectively averaging the outputs of these trees to produce a more accurate prediction than any single tree alone; this approach is called "ensemble learning" and helps to reduce overfitting by introducing diversity among the trees.
 
- ![image](https://github.com/user-attachments/assets/7578abd1-e7e2-4fbb-92d3-7c6bb9165d83)
+<img src="https://github.com/user-attachments/assets/7578abd1-e7e2-4fbb-92d3-7c6bb9165d83" style="width: 80%; height: auto;">
 
  Hyperparameters
 - n_estimators = 200 trees for better accuracy and reduced variance.
@@ -224,7 +224,7 @@ My approach involves testing and comparing several types of models to determine 
 - XGBoost works by sequentially building a series of decision trees, where each new tree learns from the errors made by the previous trees, effectively correcting the residuals and improving the overall prediction accuracy.
 - It is a supervised learning algorithm that uses gradient descent to optimize the model, allowing it to handle large datasets efficiently and achieve high performance in both classification and regression tasks.
 
-![image](https://github.com/user-attachments/assets/7f83aa96-ceb1-4e19-ae42-5f259b9ac26f)
+<img src="https://github.com/user-attachments/assets/7f83aa96-ceb1-4e19-ae42-5f259b9ac26f" style="width: 80%; height: auto;">
 
 Hyperparameters
 - n_estimators = 200 trees for improved accuracy.
