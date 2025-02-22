@@ -200,7 +200,7 @@ My approach involves testing and comparing several types of models to determine 
 
 ### Machine Learning Models
 
-**Random Forest**
+#### Random Forest
 - Random Forest algorithm works by creating a collection of multiple decision trees, each trained on a slightly different random subset of the data.
 - It then combines their predictions to reach a final result, effectively averaging the outputs of these trees to produce a more accurate prediction than any single tree alone; this approach is called "ensemble learning" and helps to reduce overfitting by introducing diversity among the trees.
 
@@ -212,7 +212,7 @@ My approach involves testing and comparing several types of models to determine 
 - max_features = 'sqrt': Randomly selects features to add diversity and reduce overfitting.
 - random_state = 42: Ensures reproducibility and consistency.
 
-**XGBoost (eXtreme Gradient Boosting)**
+#### XGBoost (eXtreme Gradient Boosting)
 - XGBoost works by sequentially building a series of decision trees, where each new tree learns from the errors made by the previous trees, effectively correcting the residuals and improving the overall prediction accuracy.
 - It is a supervised learning algorithm that uses gradient descent to optimize the model, allowing it to handle large datasets efficiently and achieve high performance in both classification and regression tasks.
 
@@ -296,7 +296,7 @@ SARIMA(p,d,q)×(P,D,Q,s)
   - p-value: 0.0000  
   → *Stationary*
 
-### Autocorrelations (ACF) and Partial Autocorrelations (PACF) Plot
+**Autocorrelations (ACF) and Partial Autocorrelations (PACF) Plot**
 ![image](https://github.com/user-attachments/assets/37769808-1563-4172-a7e0-dd2d91981372)
 
 ![image](https://github.com/user-attachments/assets/a7deada9-4cda-48a6-b6f1-caa1d6788761)
@@ -309,7 +309,7 @@ SARIMA(p,d,q)×(P,D,Q,s)
 -  The ACF and PACF plot drops off quickly (with no strong pattern or slow decay), meaning the data is stationary after differencing.
 -  This confirms that the differencing step (d = 1) was effective in removing trends.
 
-### **Seasonality Analysis:**  
+**Seasonality Analysis:**  
 
 <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
   <img src="https://github.com/user-attachments/assets/501b8ce2-6f36-487a-9114-0955f8219bef" width="45%">
@@ -320,17 +320,17 @@ SARIMA(p,d,q)×(P,D,Q,s)
 - There is a strong seasonal pattern and afterwards the repeating pattern is still visible, indicating that seasonality remains present.
 - Additionally, the residuals appear more stationary after differencing, suggesting that the data is closer to meeting the assumptions of stationarity.
 
-**ARIMA Model Development**
+#### ARIMA Model Development
 
-<img src="https://github.com/user-attachments/assets/c937d402-72b4-4883-ac75-8e6b953804c4" width="40%">
+<img src="https://github.com/user-attachments/assets/c937d402-72b4-4883-ac75-8e6b953804c4" width="60%">
 
 - AR(1) coefficient 0.9996: Strong positive influence of past values on future values. 
 - MA(1) coefficient -0.0180: Minimal negative effect of past errors on the current value. 
 - sigma² (variance of residuals): Very small (0.0015), indicating a well-fitted model.
 
-**SARIMA Model Development**
+#### SARIMA Model Development
 
-<img src="https://github.com/user-attachments/assets/1999f176-c3c0-49f5-ac79-a154b3ffb5a6" width="40%">
+<img src="https://github.com/user-attachments/assets/1999f176-c3c0-49f5-ac79-a154b3ffb5a6" width="60%">
 
 - AR(1) coefficient 1.0001: Strong positive influence of past values on future values.
 - MA(1) coefficient -0.0185: Small negative effect of past errors on the current value.
@@ -339,8 +339,8 @@ SARIMA(p,d,q)×(P,D,Q,s)
 
 ### Model Predictions and Evaluation
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/64f024d1-bcef-46bb-af90-cff3a5e39c22" width="47%">
-  <img src="https://github.com/user-attachments/assets/e82d0dbf-d234-4b7a-8d0b-a0c0d8e089fe" width="47%">
+  <img src="https://github.com/user-attachments/assets/64f024d1-bcef-46bb-af90-cff3a5e39c22" width="50%">
+  <img src="https://github.com/user-attachments/assets/e82d0dbf-d234-4b7a-8d0b-a0c0d8e089fe" width="50%">
 </div>
 
 <div align="center">
@@ -348,7 +348,7 @@ SARIMA(p,d,q)×(P,D,Q,s)
   <img src="https://github.com/user-attachments/assets/b1f86c0f-8315-4ca5-8333-ae93b9b895d2" width="25%">
 </div>
 
-**FB Prophet (Facebook Prophet)**
+### FB Prophet (Facebook Prophet)
 Prophet is an open-source time series forecasting tool developed by Facebook (Meta). 
 It is designed to handle time series data with trends, seasonality, and holidays using an intuitive and flexible approach.
 
@@ -359,14 +359,58 @@ y: The target variable (values to forecast).
 2. Training the model
 3. Making future prediction , I used a period of one year
 
-**Prohet model evaluation and predictions**
+#### Prohet model evaluation and predictions
 <div align="center">
   <img src="https://github.com/user-attachments/assets/3e01e2ad-606e-4522-b312-78fafbbbc799" width="48%">
   <img src="https://github.com/user-attachments/assets/3ad97d31-b6bd-4cf9-a9f2-9b00dde24d9d" width="48%">
 </div>
 
-<div align="center">
+<div style="text-align: right;">
   <img src="https://github.com/user-attachments/assets/3ee4cc21-376e-439e-891a-8021fc3a3f1a" width="25%">
+</div>
+
+### LSTM (Long Short-Term Memory)
+- LSTM is a type of Recurrent Neural Network (RNN) used to capture long-term dependencies in sequential data. 
+- Unlike traditional RNNs, LSTM overcomes the vanishing gradient problem, making it effective for learning patterns over long sequences.
+LSTM Cell Architecture
+- Cell State → Stores long-term memory
+- Hidden State → Short-term memory passed to the next time step
+- Forget Gate → Decides what information to discard
+- Input Gate → Decides what new information to store
+- Output Gate → Controls what part of the cell state is output
+  
+![image](https://github.com/user-attachments/assets/4f0a13c8-ba72-4406-981c-624e1298d3b9)
+
+#### LSTM Model Development
+
+![image](https://github.com/user-attachments/assets/53f7d205-bf38-4adb-bc2e-0ca4009c7baa)
+
+- Developed an LSTM network with two layers (50 and 40 units) and dropout regularization, followed by dense layers for regression.
+
+- Compiled the model with a low learning rate and mean squared error as the loss function.
+
+- Employed early stopping (patience of 10) to prevent overfitting.
+
+- Trained separate models for Bitcoin, Ethereum, and Solana using a batch size of 64 over up to 100 epochs, storing training histories for analysis.
+
+#### LSTM Model Performance
+
+![image](https://github.com/user-attachments/assets/e6c274ea-b5dd-44d2-8056-807f89b3d4cf)
+
+- The loss curves show a steady and consistent decrease, indicating that the models are learning effectively.
+- The training and validation loss curves are closely aligned, meaning the models generalize well to unseen data.
+- The models reach a near-zero plateau, suggesting they have converged and additional training may not bring significant improvements.
+
+#### LSM Model Predictions
+
+<div style="display: flex; justify-content: center; gap: 10px;">
+  <img src="https://github.com/user-attachments/assets/08ad6e78-d58a-4db9-ad0d-e553f4bf3558" width="30%">
+  <img src="https://github.com/user-attachments/assets/a0da0b5b-a504-40c4-acf5-109a83fc0b35" width="30%">
+  <img src="https://github.com/user-attachments/assets/c8ff1783-cdad-41f5-ba78-1cbf219cff51" width="30%">
+</div>
+
+<div style="text-align: center; margin-top: 10px;">
+  <img src="https://github.com/user-attachments/assets/ddf62fb7-3e76-4705-b4c1-63cd2dc1980e" width="20%">
 </div>
 
 ### **Time Series Windowing (Sequence Generation)**
