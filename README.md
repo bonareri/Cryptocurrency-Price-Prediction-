@@ -178,7 +178,7 @@ Volatility measures how much prices fluctuate over time. Higher volatility indic
 
 ![image](https://github.com/user-attachments/assets/9dee60b9-23b5-455b-87ac-80c2d21959c4)
 
-## 6. Data Preprocessing
+## 7. Data Preprocessing
 
 To prepare the dataset for analysis and model training, the following preprocessing steps were performed:
 
