@@ -394,7 +394,8 @@ LSTM Cell Architecture
 - Input Gate → Decides what new information to store
 - Output Gate → Controls what part of the cell state is output
   
-![image](https://github.com/user-attachments/assets/4f0a13c8-ba72-4406-981c-624e1298d3b9)
+<img src="https://github.com/user-attachments/assets/4f0a13c8-ba72-4406-981c-624e1298d3b9" style="width: 80%; height: auto;">
+
 
 #### LSTM Model Development
 
