@@ -5,14 +5,6 @@
 
 This project aims to build a Cryptocurrency Price Prediction system to help traders and investors make data-driven decisions. Cryptocurrency markets are highly volatile, and predicting price movements can minimize risks, maximize profits, and enhance trading strategies.
 
-Unlike traditional markets, cryptocurrencies operate 24/7 and are influenced by factors such as social media trends and global regulations. The project utilizes techniques the following techniques:
-
-- **Machine Learning Models**: Random Forest, XG-Boost.
-- **Time series Models**:  ARIMA, SARIMA, PROPHET
-- **Deep Learning Models**: LSTM
-
-These techniques will provide accurate insights to aid cryptocurrency traders and investors.
-
 ---
 
 ## 2. Problem Statement 
@@ -26,9 +18,6 @@ This project aims to achieve the following goals:
 - **Analyzing Historical Price Trends** – Study past price trends to understand market behavior and identify patterns.
 - **Implementing Machine Learning and Time series Models for Prediction** – Develop and train models like LSTMs, Random Forest, and ARIMA to predict future cryptocurrency prices.
 - **Evaluating Model Accuracy and Improving Predictions** – Assess the performance of different models and fine-tune them to improve prediction accuracy.
-
-By accomplishing these objectives, the project will provide reliable and data-driven predictions for cryptocurrency price movements.
-
 
 ## 4. Data Collection
 
@@ -220,6 +209,40 @@ My approach involves testing and comparing several types of models to determine 
 - It then combines their predictions to reach a final result, effectively averaging the outputs of these trees to produce a more accurate prediction than any single tree alone; this approach is called "ensemble learning" and helps to reduce overfitting by introducing diversity among the trees.
 
  ![image](https://github.com/user-attachments/assets/7578abd1-e7e2-4fbb-92d3-7c6bb9165d83)
+
+ Hyperparameters
+- n_estimators = 200 trees for better accuracy and reduced variance.
+- max_depth = 10: Limits tree depth to prevent overfitting.
+- max_features = 'sqrt': Randomly selects features to add diversity and reduce overfitting.
+- random_state = 42: Ensures reproducibility and consistency.
+
+**XGBoost (eXtreme Gradient Boosting)**
+- XGBoost works by sequentially building a series of decision trees, where each new tree learns from the errors made by the previous trees, effectively correcting the residuals and improving the overall prediction accuracy.
+- It is a supervised learning algorithm that uses gradient descent to optimize the model, allowing it to handle large datasets efficiently and achieve high performance in both classification and regression tasks.
+
+![image](https://github.com/user-attachments/assets/7f83aa96-ceb1-4e19-ae42-5f259b9ac26f)
+
+Hyperparameters
+- n_estimators = 200 trees for improved accuracy.
+- learning_rate = 0.05 to prevent overfitting.
+- max_depth = 7 to control tree complexity.
+- L2 (0.5) ridge regularization to prevent any single feature from dominating the model, since the dataset has highly correlated features.
+- Random state of 42 for consistent results.
+
+#### Machine learning Model Evaluation
+![image](https://github.com/user-attachments/assets/0af46f87-e27c-4baa-b44a-d79e1cee3841)
+![image](https://github.com/user-attachments/assets/e8f5ea9a-fd5f-44e5-9754-979c4f3c9f59)
+
+![image](https://github.com/user-attachments/assets/40af424a-7389-4a6e-b47f-c9ebc3d735ee)
+![image](https://github.com/user-attachments/assets/4e5a8b74-43bb-4533-9606-ddbb26f9f4d0)
+
+
+
+
+
+
+
+
 
 
 ### **Checking for Stationarity**
