@@ -281,8 +281,8 @@ SARIMA(p,d,q)×(P,D,Q,s)
 **Transformations for Stationarity**
 
 - **Log Transformation:**
- - Applied log transformation to stabilize the variance and reduce the effect of large fluctuations in the data.
- - This helped smooth out exponential growth trends.
+  - Applied log transformation to stabilize the variance and reduce the effect of large fluctuations in the data.
+  - This helped smooth out exponential growth trends.
 
 - **Differencing:**  
   - Applied first-order differencing to remove trends in the data.
