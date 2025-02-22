@@ -414,11 +414,12 @@ LSTM Cell Architecture
 #### LSM Model Predictions
 
 <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
-  <img src="https://github.com/user-attachments/assets/08ad6e78-d58a-4db9-ad0d-e553f4bf3558" style="width: 58%; height: 200px; object-fit: cover;">
-  <img src="https://github.com/user-attachments/assets/a0da0b5b-a504-40c4-acf5-109a83fc0b35" style="width: 58%; height: 200px; object-fit: cover;">
-  <img src="https://github.com/user-attachments/assets/c8ff1783-cdad-41f5-ba78-1cbf219cff51" style="width: 58%; height: 200px; object-fit: cover;">
-  <img src="https://github.com/user-attachments/assets/ddf62fb7-3e76-4705-b4c1-63cd2dc1980e" style="width: 28%; height: 200px; object-fit: cover;">
+  <img src="https://github.com/user-attachments/assets/08ad6e78-d58a-4db9-ad0d-e553f4bf3558" style="width: 48%; height: 250px; object-fit: cover;">
+  <img src="https://github.com/user-attachments/assets/a0da0b5b-a504-40c4-acf5-109a83fc0b35" style="width: 48%; height: 250px; object-fit: cover;">
+  <img src="https://github.com/user-attachments/assets/c8ff1783-cdad-41f5-ba78-1cbf219cff51" style="width: 48%; height: 250px; object-fit: cover;">
+  <img src="https://github.com/user-attachments/assets/ddf62fb7-3e76-4705-b4c1-63cd2dc1980e" style="width: 25%; height: 180px; object-fit: cover;">
 </div>
+
 
 
 ### **Time Series Windowing (Sequence Generation)**
