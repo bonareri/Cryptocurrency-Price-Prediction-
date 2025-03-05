@@ -254,9 +254,6 @@ Hyperparameters
 
 The **ARIMA** model is a popular statistical method used for time series forecasting. It captures patterns in time series data by combining three components.
 
-**Components of ARIMA**
-ARIMA is represented as **ARIMA(p, d, q)**:
-
 **1. AutoRegressive (AR) Component (p)**
 - Uses past values of the series to predict the next value.
 - If `p = 2`, the current value depends on the last two values:
