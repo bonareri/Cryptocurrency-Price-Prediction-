@@ -251,19 +251,119 @@ Hyperparameters
 
 ### Time Series Models
 #### Autoregressive Integrated Moving Average (ARIMA)
-A statistical analysis model that predicts future values based on historical data. It has three main components: 
-- AR (AutoRegressive): Uses past values to predict the future.
-- I (Integrated): The differencing of raw observations to make the time series stationary.
-- MA (Moving Average): Uses past errors to predict the future.
+
+The **ARIMA** model is a popular statistical method used for time series forecasting. It captures patterns in time series data by combining three components.
+
+**Components of ARIMA**
+ARIMA is represented as **ARIMA(p, d, q)**:
+
+**1. AutoRegressive (AR) Component (p)**
+- Uses past values of the series to predict the next value.
+- If `p = 2`, the current value depends on the last two values:
+
+  \[
+  Y_t = \phi_1 Y_{t-1} + \phi_2 Y_{t-2} + \epsilon_t
+  \]
+
+  where:
+  - \( Y_t \) is the current value.
+  - \( \phi_1, \phi_2 \) are AR coefficients.
+  - \( \epsilon_t \) is white noise (random error).
+
+**2. Integrated (I) Component (d)**
+- Ensures the time series is stationary (constant mean and variance over time).
+- Differencing is applied \( d \) times until the series becomes stationary.
+- First-order differencing:
+
+  \[
+  Y'_t = Y_t - Y_{t-1}
+  \]
+
+  where \( Y'_t \) is the differenced series.
+
+**3. Moving Average (MA) Component (q)**
+- Uses past forecast errors to improve predictions.
+- If `q = 1`, the model includes the last error term:
+
+  \[
+  Y_t = \theta_1 \epsilon_{t-1} + \epsilon_t
+  \]
+
+  where:
+  - \( \theta_1 \) is the MA coefficient.
+  - \( \epsilon_{t-1} \) is the previous error term.
+
+#### How ARIMA Works
+
+1. **Make the Series Stationary**  
+   - Check for trends or seasonality.
+   - Apply differencing if necessary.
+
+2. **Select ARIMA Parameters (p, d, q)**  
+   - Use **Autocorrelation Function (ACF)** and **Partial Autocorrelation Function (PACF)** plots.
+
+3. **Fit the Model**  
+   - Train ARIMA on historical data.
+
+4. **Make Forecasts**  
+   - Once trained, use the model to predict future values.
+
+## When to Use ARIMA
+- Works well for **non-seasonal data**.
+- If the data has a trend, use **ARIMA** (after differencing).
+- For seasonal data, use **SARIMA (Seasonal ARIMA)**.
   
-Key Parameters of ARIMA
-- p: Number of past values (lags).
-- d: Degree of differencing (to make data stationary).
-- q: Moving average window size.
-  
-#### SARIMA (Seasonal AutoRegressive Integrated Moving Average)
-An extension of ARIMA that accounts for seasonality in time series data. It is represented as:
-SARIMA(p,d,q)×(P,D,Q,s)
+#### SARIMA (Seasonal AutoRegressive Integrated Moving Average) Model Explained
+
+The **SARIMA (Seasonal ARIMA)** model is an extension of the **ARIMA** model that accounts for **seasonality** in time series data. It is represented as:
+
+\[
+SARIMA(p, d, q) \times (P, D, Q, s)
+\]
+
+where:  
+- **(p, d, q)** are the ARIMA components:
+  - **p** = AutoRegressive (AR) order (lags of past values)
+  - **d** = Differencing order (for stationarity)
+  - **q** = Moving Average (MA) order (lags of past errors)
+- **(P, D, Q, s)** are the seasonal components:
+  - **P** = Seasonal AutoRegressive order
+  - **D** = Seasonal differencing order
+  - **Q** = Seasonal Moving Average order
+  - **s** = Length of the seasonal cycle (e.g., `12` for monthly data)
+
+---
+
+#### **How SARIMA Works**
+
+**1. Differencing for Stationarity**
+SARIMA applies **two types of differencing** to make the time series stationary:
+- **Regular differencing (d):** Removes trends in the data.
+- **Seasonal differencing (D):** Removes repeating seasonal patterns.
+
+For example, if working with monthly data, a **seasonal difference** would be:
+
+\[
+Y_t' = Y_t - Y_{t-s}
+\]
+
+where \( s \) is the season length (e.g., 12 for monthly data).
+
+**2. Handling Seasonality with SARIMA**
+The seasonal components **(P, D, Q, s)** work similarly to the non-seasonal components, but they operate at the **seasonal level** instead of individual time steps.
+
+For example, in a **SARIMA(1,1,1)(1,1,1,12)** model for **monthly data**:
+- **(1,1,1):** ARIMA terms handling short-term dependencies.
+- **(1,1,1,12):** Seasonal ARIMA terms handling annual seasonal patterns.
+
+**3. Model Selection**
+- Use **Autocorrelation Function (ACF)** and **Partial Autocorrelation Function (PACF)** plots to choose \( p, q, P, Q \).
+- Use **Akaike Information Criterion (AIC)** to find the best parameter combination.
+
+**4. Forecasting with SARIMA**
+Once fitted, SARIMA can generate forecasts that **incorporate seasonal patterns** along with trends.
+
+---
 
 ![image](https://github.com/user-attachments/assets/25f53d72-2a9b-4ab1-adae-0da933d0c08d)
 
