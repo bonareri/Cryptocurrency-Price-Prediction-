@@ -258,37 +258,13 @@ The **ARIMA** model is a popular statistical method used for time series forecas
 - Uses past values of the series to predict the next value.
 - If `p = 2`, the current value depends on the last two values:
 
-  \[
-  Y_t = \phi_1 Y_{t-1} + \phi_2 Y_{t-2} + \epsilon_t
-  \]
-
-  where:
-  - \( Y_t \) is the current value.
-  - \( \phi_1, \phi_2 \) are AR coefficients.
-  - \( \epsilon_t \) is white noise (random error).
-
 **2. Integrated (I) Component (d)**
 - Ensures the time series is stationary (constant mean and variance over time).
 - Differencing is applied \( d \) times until the series becomes stationary.
-- First-order differencing:
-
-  \[
-  Y'_t = Y_t - Y_{t-1}
-  \]
-
-  where \( Y'_t \) is the differenced series.
 
 **3. Moving Average (MA) Component (q)**
 - Uses past forecast errors to improve predictions.
 - If `q = 1`, the model includes the last error term:
-
-  \[
-  Y_t = \theta_1 \epsilon_{t-1} + \epsilon_t
-  \]
-
-  where:
-  - \( \theta_1 \) is the MA coefficient.
-  - \( \epsilon_{t-1} \) is the previous error term.
 
 #### How ARIMA Works
 
