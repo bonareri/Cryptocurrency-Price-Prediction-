@@ -537,7 +537,7 @@ where:
 - (b\) symbolizes the bias vector
 - (f\) denotes a non-linear activation function (typically hyperbolic tangent, tanh, or rectified linear unit, ReLU)
 
-![image](https://github.com/user-attachments/assets/51c7e8d5-010f-49ef-a9dc-5b91b508ee40)
+<img src="https://github.com/user-attachments/assets/51c7e8d5-010f-49ef-a9dc-5b91b508ee40" style="width: 80%; height: auto;">
 
 #### Problem with RNNs: Vanishing Gradient
 When training deep RNNs, the gradients during backpropagation **become extremely small (vanish)**, making it hard for the network to remember long-term dependencies. This is known as the **vanishing gradient problem**.
