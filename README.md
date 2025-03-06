@@ -200,9 +200,9 @@ My approach involves testing and comparing several types of models to determine 
 - Deep Learning Models: Long Short Term Memory (LSTM)
   - Leverage recurrent neural networks to capture long-term dependencies in    sequential data.
 
-### Machine Learning Models
+## Machine Learning Models
 
-#### Random Forest
+### Random Forest
 - Random Forest is an ensemble learning algorithm that builds multiple decision trees and merges their predictions to improve accuracy and reduce overfitting. It is used for both **classification** and **regression** tasks.
 - Random Forest follows a **bagging (Bootstrap Aggregation) approach** to create multiple decision trees and combines their outputs for better predictions.
 
@@ -234,7 +234,7 @@ My approach involves testing and comparing several types of models to determine 
 - max_features = 'sqrt': Randomly selects features to add diversity and reduce overfitting.
 - random_state = 42: Ensures reproducibility and consistency.
 
-#### XGBoost (eXtreme Gradient Boosting)
+### XGBoost (eXtreme Gradient Boosting)
 - XGBoost builds an ensemble of decision trees sequentially, where each new tree corrects the errors of the previous ones using gradient descent.
 - Gradient Descent is an optimization algorithm used in machine learning to minimize the loss function by iteratively adjusting model parameters.
 
@@ -297,8 +297,8 @@ Hyperparameters
 </div>
 
 
-### Time Series Models
-#### Autoregressive Integrated Moving Average (ARIMA)
+## Time Series Models
+### Autoregressive Integrated Moving Average (ARIMA)
 
 The **ARIMA** model is a popular statistical method used for time series forecasting. It captures patterns in time series data by combining three components.
 
@@ -328,13 +328,8 @@ The **ARIMA** model is a popular statistical method used for time series forecas
 
 4. **Make Forecasts**  
    - Once trained, use the model to predict future values.
-
-## When to Use ARIMA
-- Works well for **non-seasonal data**.
-- If the data has a trend, use **ARIMA** (after differencing).
-- For seasonal data, use **SARIMA (Seasonal ARIMA)**.
   
-#### SARIMA (Seasonal AutoRegressive Integrated Moving Average) Model
+### SARIMA (Seasonal AutoRegressive Integrated Moving Average)
 
 The **SARIMA (Seasonal ARIMA)** model is an extension of the **ARIMA** model that accounts for **seasonality** in time series data. It is represented as:
 
@@ -474,7 +469,7 @@ Once fitted, SARIMA can generate forecasts that **incorporate seasonal patterns*
 </div>
 
 
-#### FB Prophet (Facebook Prophet)
+### FB Prophet (Facebook Prophet)
 - Prophet is an **open-source time series forecasting model** developed by Facebook (Meta).
 - It is designed to handle missing data, seasonality, and trend shifts, making it highly effective for business and financial forecasting.
 
