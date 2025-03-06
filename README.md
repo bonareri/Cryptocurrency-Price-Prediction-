@@ -206,7 +206,7 @@ My approach involves testing and comparing several types of models to determine 
 - Random Forest is an ensemble learning algorithm that builds multiple decision trees and merges their predictions to improve accuracy and reduce overfitting. It is used for both **classification** and **regression** tasks.
 - Random Forest follows a **bagging (Bootstrap Aggregation) approach** to create multiple decision trees and combines their outputs for better predictions.
 
-##### How Random Forest Works
+#### How Random Forest Works
 
 1. **Bootstrap Sampling:**  
    - The dataset is randomly sampled **with replacement** to create multiple subsets (bootstrap samples).  
@@ -235,9 +235,10 @@ My approach involves testing and comparing several types of models to determine 
 - random_state = 42: Ensures reproducibility and consistency.
 
 #### XGBoost (eXtreme Gradient Boosting)
-XGBoost builds an ensemble of decision trees sequentially, where each new tree corrects the errors of the previous ones using gradient boosting.
+- XGBoost builds an ensemble of decision trees sequentially, where each new tree corrects the errors of the previous ones using gradient descent.
+- Gradient Descent is an optimization algorithm used in machine learning to minimize the loss function by iteratively adjusting model parameters.
 
-##### How XGBoost Works:
+#### How XGBoost Works:
 1. **Initialize Predictions:**  
    - The first prediction is a simple base value, such as the mean (for regression) or a uniform probability (for classification).
 
@@ -333,7 +334,7 @@ The **ARIMA** model is a popular statistical method used for time series forecas
 - If the data has a trend, use **ARIMA** (after differencing).
 - For seasonal data, use **SARIMA (Seasonal ARIMA)**.
   
-#### SARIMA (Seasonal AutoRegressive Integrated Moving Average) Model Explained
+#### SARIMA (Seasonal AutoRegressive Integrated Moving Average) Model
 
 The **SARIMA (Seasonal ARIMA)** model is an extension of the **ARIMA** model that accounts for **seasonality** in time series data. It is represented as:
 
@@ -473,16 +474,45 @@ Once fitted, SARIMA can generate forecasts that **incorporate seasonal patterns*
 </div>
 
 
-### FB Prophet (Facebook Prophet)
-Prophet is an open-source time series forecasting tool developed by Facebook (Meta). 
-It is designed to handle time series data with trends, seasonality, and holidays using an intuitive and flexible approach.
+#### FB Prophet (Facebook Prophet)
+- Prophet is an **open-source time series forecasting model** developed by Facebook (Meta).
+- It is designed to handle missing data, seasonality, and trend shifts, making it highly effective for business and financial forecasting.
 
-Model Development
-1. Preprocessing - Prophet expects a dataframe with two columns:
-ds: The date column (datetime format).
-y: The target variable (values to forecast).
-2. Training the model
-3. Making future prediction , I used a period of one year
+#### How Prophet Works
+
+Prophet models time series data as a combination of the following components:
+
+\[
+y(t) = g(t) + s(t) + h(t) + \epsilon_t
+\]
+
+Where:
+- **\( g(t) \)**: Trend component (captures long-term growth or decline).
+- **\( s(t) \)**: Seasonal component (captures weekly, monthly, or yearly seasonality).
+- **\( h(t) \)**: Holiday effects (captures special events that impact the time series).
+- **\( \epsilon_t \)**: Error term (captures any noise in the data).
+
+#### Step-by-Step Process:
+
+1. **Trend Estimation:**  
+   - Prophet fits a **piecewise linear or logistic growth model** to capture the overall trend.  
+   - It detects **change points** where the trend shifts.  
+
+2. **Seasonality Modeling:**  
+   - Uses **Fourier series** to model periodic seasonal variations.  
+   - Automatically detects daily, weekly, and yearly patterns.  
+
+3. **Holiday Effects:**  
+   - Users can define a list of holidays/events that impact the time series.  
+   - The model assigns additional effects for these events.  
+
+4. **Uncertainty Intervals:**  
+   - Prophet generates **uncertainty intervals** around forecasts to account for variability.  
+
+5. **Prediction Generation:**  
+   - Once trained, the model generates future predictions, adjusting for trend, seasonality, and holiday effects.  
+
+---
 
 #### Prohet model evaluation and predictions
 <div style="display: flex; justify-content: center; gap: 10px;">
@@ -492,18 +522,119 @@ y: The target variable (values to forecast).
 
 <img src="https://github.com/user-attachments/assets/461c361b-0023-4fa2-94c0-760fe20784fd" width="20%">
 
-### LSTM (Long Short-Term Memory)
-- LSTM is a type of Recurrent Neural Network (RNN) used to capture long-term dependencies in sequential data. 
-- Unlike traditional RNNs, LSTM overcomes the vanishing gradient problem, making it effective for learning patterns over long sequences.
-LSTM Cell Architecture
-- Cell State → Stores long-term memory
-- Hidden State → Short-term memory passed to the next time step
-- Forget Gate → Decides what information to discard
-- Input Gate → Decides what new information to store
-- Output Gate → Controls what part of the cell state is output
-  
-<img src="https://github.com/user-attachments/assets/4f0a13c8-ba72-4406-981c-624e1298d3b9" style="width: 80%; height: auto;">
+### Recurrent Neural Networks (RNN) and LSTM:
 
+- A **Recurrent Neural Network (RNN)** is a type of **neural network** designed for **sequential data**.
+- Unlike traditional neural networks, which assume inputs are independent of each other, RNNs **retain memory of previous inputs** to make better predictions for current inputs.
+
+#### How RNNs Work:
+At each time step \( t \), the RNN takes an input \( x_t \) and the previous hidden state \( h_{t-1} \), then computes the new hidden state \( h_t \):
+
+\[
+h_t = \tanh(W_h h_{t-1} + W_x x_t + b)
+\]
+
+where:
+- \( h_t \) is the new hidden state (memory of past inputs).
+- \( x_t \) is the current input.
+- \( W_h \), \( W_x \), and \( b \) are learnable parameters.
+- \( \tanh \) is an activation function.
+
+#### Problem with RNNs: Vanishing Gradient
+When training deep RNNs, the gradients during backpropagation **become extremely small (vanish)**, making it hard for the network to remember long-term dependencies. This is known as the **vanishing gradient problem**.
+
+### Long Short-Term Memory (LSTM)
+
+- **LSTM (Long Short-Term Memory)** is a type of **Recurrent Neural Network (RNN)** designed to handle long-term dependencies in **sequential data**.
+- It overcomes the **vanishing gradient problem** faced by traditional RNNs by using a memory cell and three gates (**Forget, Input, Output**).
+
+#### LSTM Architecture
+
+Each LSTM cell contains:
+1. **Forget Gate (\( f_t \))** – Decides what information should be discarded.
+2. **Input Gate (\( i_t \))** – Decides what new information to store.
+3. **Cell State (\( C_t \))** – Stores important long-term information.
+4. **Output Gate (\( o_t \))** – Decides what information should be sent to the next time step.
+
+---
+
+#### How LSTM Works
+
+At each time step \( t \), LSTM takes **input \( x_t \)** and the **previous hidden state \( h_{t-1} \)** and processes them through the following steps:
+
+**Step 1: Forget Gate (\( f_t \))**
+- Determines how much of the previous memory \( C_{t-1} \) should be kept.
+- Uses a **sigmoid activation function** (\( \sigma \)) to output a value between **0 (forget everything)** and **1 (keep everything)**.
+
+\[
+f_t = \sigma(W_f \cdot [h_{t-1}, x_t] + b_f)
+\]
+
+Where:
+- \( W_f \) = Weight matrix for forget gate.
+- \( b_f \) = Bias term.
+- \( h_{t-1} \) = Previous hidden state.
+- \( x_t \) = Current input.
+- \( \sigma \) = Sigmoid activation function.
+
+---
+
+**Step 2: Input Gate (\( i_t \))**
+- Decides what new information should be added to the cell state.
+- Uses **two functions**:
+  1. A **sigmoid function** to decide which values to update.
+  2. A **tanh function** to create a vector of new candidate values.
+
+\[
+i_t = \sigma(W_i \cdot [h_{t-1}, x_t] + b_i)
+\]
+
+\[
+\tilde{C_t} = \tanh(W_C \cdot [h_{t-1}, x_t] + b_C)
+\]
+
+Where:
+- \( W_i \) and \( b_i \) = Weights and bias for the input gate.
+- \( W_C \) and \( b_C \) = Weights and bias for new candidate values.
+- \( \tilde{C_t} \) = New candidate values.
+
+---
+
+**Step 3: Update Cell State (\( C_t \))**
+- The cell state is updated using:
+  - The **forget gate** to remove old information.
+  - The **input gate** to add new information.
+
+\[
+C_t = f_t * C_{t-1} + i_t * \tilde{C_t}
+\]
+
+Where:
+- \( C_{t-1} \) = Previous cell state.
+- \( C_t \) = Updated cell state.
+
+---
+
+**Step 4: Output Gate (\( o_t \))**
+- Determines what the next **hidden state \( h_t \)** should be.
+- Uses a **sigmoid function** to filter the important parts of the cell state.
+- Passes the filtered cell state through a **tanh function**.
+
+\[
+o_t = \sigma(W_o \cdot [h_{t-1}, x_t] + b_o)
+\]
+
+\[
+h_t = o_t * \tanh(C_t)
+\]
+
+Where:
+- \( W_o \) and \( b_o \) = Weights and bias for the output gate.
+- \( h_t \) = Updated hidden state (passed to the next time step).
+
+---
+
+<img src="https://github.com/user-attachments/assets/4f0a13c8-ba72-4406-981c-624e1298d3b9" style="width: 80%; height: auto;">
 
 #### LSTM Model Development
 
