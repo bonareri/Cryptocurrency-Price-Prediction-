@@ -203,8 +203,28 @@ My approach involves testing and comparing several types of models to determine 
 ### Machine Learning Models
 
 #### Random Forest
-- Random Forest algorithm works by creating a collection of multiple decision trees, each trained on a slightly different random subset of the data.
-- It then combines their predictions to reach a final result, effectively averaging the outputs of these trees to produce a more accurate prediction than any single tree alone; this approach is called "ensemble learning" and helps to reduce overfitting by introducing diversity among the trees.
+- Random Forest is an ensemble learning algorithm that builds multiple decision trees and merges their predictions to improve accuracy and reduce overfitting. It is used for both **classification** and **regression** tasks.
+- Random Forest follows a **bagging (Bootstrap Aggregation) approach** to create multiple decision trees and combines their outputs for better predictions.
+
+##### How Random Forest Works
+
+1. **Bootstrap Sampling:**  
+   - The dataset is randomly sampled **with replacement** to create multiple subsets (bootstrap samples).  
+   - Each subset is used to train a separate decision tree.  
+
+2. **Feature Selection at Each Split:**  
+   - Instead of considering all features, Random Forest selects a **random subset of features** for each split in a tree.  
+   - This introduces variability, making trees less correlated and reducing overfitting.  
+
+3. **Grow Multiple Decision Trees:**  
+   - Each tree is trained independently on a different bootstrap sample.  
+   - The trees are **fully grown** without pruning.  
+
+4. **Aggregation of Predictions:**  
+   - **For classification:** The final prediction is made using **majority voting** (the most common class among trees).  
+   - **For regression:** The final prediction is the **average of all tree outputs**.  
+
+---
 
 <img src="https://github.com/user-attachments/assets/7578abd1-e7e2-4fbb-92d3-7c6bb9165d83" style="width: 80%; height: auto;">
 
@@ -215,9 +235,36 @@ My approach involves testing and comparing several types of models to determine 
 - random_state = 42: Ensures reproducibility and consistency.
 
 #### XGBoost (eXtreme Gradient Boosting)
-- XGBoost works by sequentially building a series of decision trees, where each new tree learns from the errors made by the previous trees, effectively correcting the residuals and improving the overall prediction accuracy.
-- It is a supervised learning algorithm that uses gradient descent to optimize the model, allowing it to handle large datasets efficiently and achieve high performance in both classification and regression tasks.
+XGBoost builds an ensemble of decision trees sequentially, where each new tree corrects the errors of the previous ones using gradient boosting.
 
+##### How XGBoost Works:
+1. **Initialize Predictions:**  
+   - The first prediction is a simple base value, such as the mean (for regression) or a uniform probability (for classification).
+
+2. **Compute Loss Function:**  
+   - A loss function (e.g., Mean Squared Error for regression, Log Loss for classification) measures how far predictions are from actual values.
+
+3. **Compute Gradients (First-Order Derivatives) and Hessians (Second-Order Derivatives):**  
+   - XGBoost calculates the gradient (first derivative of the loss) to determine the direction of improvement.
+   - It also computes the Hessian (second derivative) to estimate the step size for updates.
+
+4. **Build Decision Trees:**  
+   - New trees are added iteratively to minimize the loss.
+   - Trees are constructed using a greedy algorithm, selecting the best feature splits based on gain.
+   - Instead of directly predicting target values, trees predict adjustments (residuals) to previous predictions.
+
+5. **Weight Updates:**  
+   - Leaf values of trees are updated using the computed gradients and Hessians.
+   - Learning rate (shrinkage factor) controls the contribution of each tree to prevent overfitting.
+
+6. **Regularization & Pruning:**  
+   - XGBoost includes L1 (Lasso) and L2 (Ridge) regularization to reduce overfitting.
+   - It prunes trees by removing splits that do not contribute significantly to reducing loss.
+
+7. **Final Prediction:**  
+   - The predictions from all trees are summed up, adjusting for the learning rate.
+
+---
 <img src="https://github.com/user-attachments/assets/7f83aa96-ceb1-4e19-ae42-5f259b9ac26f" style="width: 80%; height: auto;">
 
 Hyperparameters
