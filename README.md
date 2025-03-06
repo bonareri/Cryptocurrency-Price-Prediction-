@@ -526,14 +526,18 @@ Where:
 At each time step \( t \), the RNN takes an input \( x_t \) and the previous hidden state \( h_{t-1} \), then computes the new hidden state \( h_t \):
 
 \[
-h_t = \tanh(W_h h_{t-1} + W_x x_t + b)
+[h_t = f(W_x x_t + W_h h_{t-1} + b)\]
 \]
 
 where:
-- \( h_t \) is the new hidden state (memory of past inputs).
-- \( x_t \) is the current input.
-- \( W_h \), \( W_x \), and \( b \) are learnable parameters.
-- \( \tanh \) is an activation function.
+- (h_t\) represents the hidden state at time step \(t\)
+- (x_t\) denotes the input at time step \(t\)
+- (W_x\) corresponds to the weight matrix for input
+- (W_h\) stands for the weight matrix for the hidden state
+- (b\) symbolizes the bias vector
+- (f\) denotes a non-linear activation function (typically hyperbolic tangent, tanh, or rectified linear unit, ReLU)
+
+![image](https://github.com/user-attachments/assets/51c7e8d5-010f-49ef-a9dc-5b91b508ee40)
 
 #### Problem with RNNs: Vanishing Gradient
 When training deep RNNs, the gradients during backpropagation **become extremely small (vanish)**, making it hard for the network to remember long-term dependencies. This is known as the **vanishing gradient problem**.
