@@ -730,3 +730,60 @@ Based on these metrics, **LSTM** emerges as the best-performing model for foreca
   - Setting up a robust pipeline to ensure that the model updates every hour, capturing the latest market data without delays.
 - Visualization & Monitoring:
   - Lastly, I'll develop a dashboard to visualize real-time predictions, sentiment trends, and key performance metrics, allowing me to monitor and refine the model effectively.
+
+
+# Cryptocurrency Price Prediction - Model Performance Analysis  
+
+## Summary of Findings  
+After updating the dataset to use a **shorter time period (2020-2025)** and testing on the last **two months of 2025**, I evaluated multiple models to determine their effectiveness in predicting Bitcoin prices. Additionally, I performed **feature engineering** to enhance model performance.  
+
+## Model Performance Comparison  
+
+| Model    | Mean Absolute Error (MAE) | Root Mean Squared Error (RMSE) | R² Score |
+|----------|--------------------------|-------------------------------|----------|
+| **Random Forest** | 2474.29 | 3564.90 | 0.7840 |
+| **XGBoost** | **1923.29** | **2606.91** | **0.8845** |
+| **ARIMA** | 11926.59 | 14639.69 | -2.6433 |
+| **SARIMA** | 13548.57 | 16473.83 | -3.6134 |
+| **PROPHET** | 13862.20 | 16943.50 | -3.8824 |
+| **LSTM** | 2545.40 | 3205.66 | 0.8115 |
+
+### **Key Observations:**  
+- **XGBoost emerged as the best-performing model**, achieving the lowest MAE (1923.29) and RMSE (2606.91), with the highest R² score (0.8845).  
+- **LSTM was the second-best model**, with a strong R² score (0.8115) but slightly higher errors compared to XGBoost.  
+- **Random Forest performed reasonably well** (R² = 0.7840) but was outperformed by XGBoost and LSTM.  
+- **Traditional time series models (ARIMA, SARIMA, Prophet) failed to capture trends effectively**, producing negative R² scores.  
+
+## Feature Engineering  
+To improve model accuracy, I incorporated various technical indicators and trading volume data, including:  
+- **Moving Averages (MA)**  
+- **Relative Strength Index (RSI)**  
+- **Moving Average Convergence Divergence (MACD)**  
+- **Bollinger Bands**  
+- **Trading Volume**  
+
+These features provided additional insights into price trends and market momentum, significantly impacting model performance.  
+
+## Insights from the Shorter Time Span  
+- In the previous experiment (2014-2023), **LSTM was the best-performing model**. However, in this updated analysis with a shorter time span, **XGBoost outperformed LSTM**.  
+- This suggests that for **shorter-term price predictions, tree-based models like XGBoost may be more effective** than deep learning models.  
+- **Time series models struggled significantly**, indicating that Bitcoin’s price movements may not follow simple time-based patterns.  
+
+## Addition of More Cryptocurrencies  
+To enhance model performance and explore multi-coin dependencies, I expanded the dataset to include the following cryptocurrencies:  
+- **Bitcoin (BTC)**  
+- **Ethereum (ETH)**  
+- **Solana (SOL)**  
+- **Tether (USDT)**  
+- **XRP (XRP)**  
+- **Binance Coin (BNB)**  
+
+This allows for potential improvements in predictive accuracy by analyzing interdependencies between different cryptocurrencies.  
+
+## Next Steps  
+To further improve the predictions, I plan to:  
+✅ **Fine-tune the LSTM model** by adjusting hyperparameters (e.g., number of layers, learning rate, dropout, and epochs) to see if performance can be improved.  
+✅ **Further optimize XGBoost** to determine if its performance can be enhanced with additional tuning.  
+
+---
+This analysis provides valuable insights into the performance of different models across different time frames, and future improvements will focus on optimizing feature selection and model tuning.
