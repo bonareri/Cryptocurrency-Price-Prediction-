@@ -7,6 +7,7 @@ import seaborn as sns
 import joblib
 from tensorflow.keras.models import load_model
 from matplotlib.dates import DateFormatter
+from datetime import timedelta
 
 # Set the Seaborn style for all plots
 sns.set_style("darkgrid")
@@ -41,10 +42,9 @@ def fetch_crypto_data(ticker):
         df.reset_index(inplace=True)
         df = df.rename(columns={"Date": "date"})
         df["date"] = pd.to_datetime(df["date"])
-
+        
         # Filter data to start from 2023
         df = df[df["date"] >= "2023-01-01"]
-        
         df.set_index("date", inplace=True)
         
         return df[["Close"]]
@@ -79,6 +79,19 @@ def create_sequences(dataset, look_back=5):
         X.append(dataset[i:i + look_back, 0])
         y.append(dataset[i + look_back, 0])
     return np.array(X).reshape(-1, look_back, 1), np.array(y)
+
+# Function to forecast next month's prices
+def forecast_next_month(model, scaler, last_window, look_back=5, days=30):
+    future_predictions = []
+    input_seq = last_window.reshape(1, look_back, 1)
+    
+    for _ in range(days):
+        predicted_price = model.predict(input_seq)[0][0]
+        future_predictions.append(predicted_price)
+        
+        input_seq = np.append(input_seq[:, 1:, :], [[[predicted_price]]], axis=1)
+    
+    return scaler.inverse_transform(np.array(future_predictions).reshape(-1, 1))
 
 # Streamlit UI
 st.title("Cryptocurrency Price Prediction")
@@ -117,10 +130,24 @@ comparison_df = pd.DataFrame({
 st.subheader(f"{selected_coin.capitalize()} - Actual vs. Predicted Prices")
 st.write(comparison_df.tail())
 
+# Forecast the next 30 days
+last_window = scaled_data[-5:]
+future_prices = forecast_next_month(model, scaler, last_window)
+future_dates = [dates[-1] + timedelta(days=i) for i in range(1, 31)]
+
+future_df = pd.DataFrame({
+    "Date": [d.strftime("%Y-%m-%d") for d in future_dates],
+    "Predicted Price (USD)": future_prices.flatten()
+})
+
+st.subheader(f"{selected_coin.capitalize()} - Forecast for Next 30 Days")
+st.write(future_df)
+
 # Plot results
 fig, ax = plt.subplots(figsize=(12, 5))
 ax.plot(dates, actual_prices, label="Actual Price", color="blue", linewidth=2)
 ax.plot(dates, predictions, label="Predicted Price", color="red", linestyle="dashed", linewidth=2)
+ax.plot(future_dates, future_prices, label="Forecasted Price", color="green", linestyle="dotted", linewidth=2)
 
 # Format x-axis dates as YYYY-MM-DD
 date_formatter = DateFormatter("%Y-%m-%d")
