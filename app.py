@@ -15,15 +15,14 @@ sns.set_style("darkgrid")
 COINS = {
     "bitcoin": "BTC-USD",
     "ethereum": "ETH-USD",
-    "solana": "SOL-USD"
+    "solana": "SOL-USD",
+    "tether": "USDT-USD",
+    "xrp": "XRP-USD",
+    "binancecoin": "BNB-USD"
 }
 
 # Define correct scaler file names
-SCALER_FILES = {
-    "bitcoin": "btc_scaler.pkl",
-    "ethereum": "eth_scaler.pkl",
-    "solana": "sol_scaler.pkl"
-}
+SCALER_FILES = {coin: f"{coin}_scaler.pkl" for coin in COINS.keys()}
 
 # Function to fetch historical price data
 def fetch_crypto_data(ticker):
