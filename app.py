@@ -26,7 +26,7 @@ SCALER_FILES = {
     "bitcoin": "btc_scaler.pkl",
     "ethereum": "eth_scaler.pkl",
     "solana": "sol_scaler.pkl",
-    "tether": "tether_scaler.pkl",
+    "tether": "usdt_scaler.pkl",
     "xrp": "xrp_scaler.pkl",
     "binancecoin": "bnb_scaler.pkl"
 }
