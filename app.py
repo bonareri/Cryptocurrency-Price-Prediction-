@@ -141,7 +141,7 @@ future_df = pd.DataFrame({
 })
 
 st.subheader(f"{selected_coin.capitalize()} - Forecast for Next 30 Days")
-st.write(future_df.head(7))
+st.write(future_df)
 
 # Plot results
 fig, ax = plt.subplots(figsize=(12, 5))
