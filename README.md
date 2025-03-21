@@ -743,14 +743,15 @@ After updating the dataset to use a **shorter time period (2020-2025)** and test
 
 ## Model Performance Comparison  
 
-| Model    | Mean Absolute Error (MAE) | Root Mean Squared Error (RMSE) | R² Score |
-|----------|--------------------------|-------------------------------|----------|
-| **Random Forest** | 2474.29 | 3564.90 | 0.7840 |
-| **XGBoost** | **1923.29** | **2606.91** | **0.8845** |
-| **ARIMA** | 11926.59 | 14639.69 | -2.6433 |
-| **SARIMA** | 13548.57 | 16473.83 | -3.6134 |
-| **PROPHET** | 13862.20 | 16943.50 | -3.8824 |
-| **LSTM** | 2545.40 | 3205.66 | 0.8115 |
+| **Model**        | **Mean Absolute Error (MAE)** | **Root Mean Squared Error (RMSE)** | **R² Score**  |
+|-----------------|-----------------------------|----------------------------------|-------------|
+| **XGBoost**     | **1923.29**                  | **2606.91**                      | **0.8845**  |
+| **LSTM**        | 2545.40                      | 3205.66                          | 0.8115      |
+| **Random Forest** | 2474.29                    | 3564.90                          | 0.7840      |
+| **ARIMA**       | 11926.59                     | 14639.69                         | -2.6433     |
+| **SARIMA**      | 13548.57                     | 16473.83                         | -3.6134     |
+| **PROPHET**     | 13862.20                     | 16943.50                         | -3.8824     |
+
 
 ### **Key Observations:**  
 - **XGBoost emerged as the best-performing model**, achieving the lowest MAE (1923.29) and RMSE (2606.91), with the highest R² score (0.8845).  
