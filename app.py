@@ -15,14 +15,20 @@ sns.set_style("darkgrid")
 COINS = {
     "bitcoin": "BTC-USD",
     "ethereum": "ETH-USD",
-    "solana": "SOL-USD"
+    "solana": "SOL-USD",
+    "tether": "USDT-USD",
+    "xrp": "XRP-USD",
+    "binancecoin": "BNB-USD"
 }
 
 # Define correct scaler file names
 SCALER_FILES = {
     "bitcoin": "btc_scaler.pkl",
     "ethereum": "eth_scaler.pkl",
-    "solana": "sol_scaler.pkl"
+    "solana": "sol_scaler.pkl",
+    "tether": "tether_scaler.pkl",
+    "xrp": "xrp_scaler.pkl",
+    "binancecoin": "bnb_scaler.pkl"
 }
 
 # Function to fetch historical price data
@@ -34,13 +40,11 @@ def fetch_crypto_data(ticker):
             return None
         df.reset_index(inplace=True)
         df = df.rename(columns={"Date": "date"})
-        # Convert the 'date' column to datetime for proper formatting
         df["date"] = pd.to_datetime(df["date"])
 
         # Filter data to start from 2023
         df = df[df["date"] >= "2023-01-01"]
         
-        # Set the 'date' column as the index
         df.set_index("date", inplace=True)
         
         return df[["Close"]]
@@ -55,7 +59,7 @@ def load_crypto_data():
 # Load trained model and scaler dynamically
 def load_model_and_scaler(coin):
     model_path = f"{coin}_lstm_model.keras"
-    scaler_path = SCALER_FILES.get(coin, f"{coin}_scaler.pkl")  # Use mapped filename
+    scaler_path = SCALER_FILES.get(coin, f"{coin}_scaler.pkl")
 
     try:
         model = load_model(model_path)
@@ -102,7 +106,7 @@ X, y = create_sequences(scaled_data, look_back=5)
 predictions = scaler.inverse_transform(model.predict(X))
 actual_prices = scaler.inverse_transform(y.reshape(-1, 1))
 
-# Create a DataFrame for comparison with formatted dates (YYYY-MM-DD)
+# Create a DataFrame for comparison
 dates = df.index[5:]
 comparison_df = pd.DataFrame({
     "Date": dates.strftime("%Y-%m-%d"),
